@@ -10,6 +10,7 @@ namespace PIF1006Devoir1
     {
         static void Main(string[] args)
         {
+
         }
     }
 }
