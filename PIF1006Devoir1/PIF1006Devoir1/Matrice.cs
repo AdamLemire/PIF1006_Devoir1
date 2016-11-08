@@ -74,20 +74,21 @@ namespace PIF1006Devoir1
             {
                 int n = _matrice.GetLength(0);
                 int p = matrice.GetLength(1);
-                double[,] matriceResultante = new double[n, p];
+                
+                Matrice produitMatriciel = new Matrice(new double[n, p]);
 
 
                 for(int i = 0; i < n; i++)
                 {
                     for(int j = 0; j < p; j++)
                     {
-                        matriceResultante[i, j] = 0;
+                        produitMatriciel[i, j] = 0;
                         for (int z = 0; z < n; z++)
-                            matriceResultante[i, j] += _matrice[i][z] * matrice[z][j];
+                            produitMatriciel[i, j] += _matrice[i][z] * matrice[z][j];
 
                     }
                 }
-                return matriceResultante;
+                return produitMatriciel;
             }
             else
             {
