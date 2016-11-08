@@ -14,7 +14,7 @@ namespace PIF1006Devoir1
         //constructeur
         public Matrice(double[,] matrice)
         {
-            return null;
+            this._matrice = matrice;
         }
 
         //méthode d'addition de matrice
@@ -22,7 +22,7 @@ namespace PIF1006Devoir1
         {
             if(_matrice.GetLength(0)==matrice.GetLenght(0) && _matrice.GetLength(1) == matrice.GetLenght(1))
             {
-                int[,] matriceResultante = new int[n, m];
+                double[,] matriceResultante = new double[matrice.GetLenght(0), matrice.GetLenght(1)];
                 for (int i = 0; i < n; i++)
                 {
                     for (int j = 0; j < m; j++)
@@ -52,9 +52,9 @@ namespace PIF1006Devoir1
             int n = _matrice.GetLength(0);
             int m = _matrice.GetLength(1);
 
-            int[,] matriceResultante = new int[n, m];
+            double[,] matriceResultante = new double[n, m];
 
-            for(int i = 0; i < n, i++)
+            for(int i = 0; i < n; i++)
             {
                 for (int j=0; j<m;j++)
                 {
@@ -74,15 +74,26 @@ namespace PIF1006Devoir1
             {
                 int n = _matrice.GetLength(0);
                 int p = matrice.GetLength(1);
-                int[,] matriceResultante = new int[n, p];
+                double[,] matriceResultante = new double[n, p];
 
+
+                for(int i = 0; i < n; i++)
+                {
+                    for(int j = 0; j < p; j++)
+                    {
+                        matriceResultante[i, j] = 0;
+                        for (int z = 0; z < n; z++)
+                            matriceResultante[i, j] += _matrice[i][z] * matrice[z][j];
+
+                    }
+                }
+                return matriceResultante;
             }
             else
             {
                 Console.WriteLine("Produit de ces deux matrices non possible");
             }
-            return null;
-            return null;
+            
         }
 
         //méthode vérification si triangulaire
