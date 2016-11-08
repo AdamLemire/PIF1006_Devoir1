@@ -84,7 +84,7 @@ namespace PIF1006Devoir1
                     {
                         produitMatriciel[i, j] = 0;
                         for (int z = 0; z < n; z++)
-                            produitMatriciel[i, j] += _matrice[i][z] * matrice[z][j];
+                            produitMatriciel[i, j] += _matrice[i,z] * matrice[z,j];
 
                     }
                 }
@@ -98,19 +98,57 @@ namespace PIF1006Devoir1
         }
 
         //méthode vérification si triangulaire
-        public bool EstTriangulaire(Matrice matrice)
+        /*retourne vrai ou faux selon si la matrice est triangulaire
+        ou non ; 
+        comme arguments de la méthode, un premier paramètre doit dire si
+        on souhaite vérifier si la méthode est triangulaire inférieure, supérieure ou peu
+        importe, et un second paramètre doit indiquer soit on souhaite vérifier si elle
+        est triangulaire stricte ou non.
+         * */
+        public bool EstTriangulaire(String triangulaireInfSup, String triangulaireStrict)
         {
-            return false;
+            //triangulaire inferieur strict           
+            //
+            int n = _matrice();  
+            if (triangulaireInfSup == inferieur && triangulaireStrict == strict)
+            {
+                for (int i; i < n; i++)
+                {
+                    for (int j; j < m; j++)
+                    {
+                        if()
+                    }
+                }     
+            }
+
         }
 
         //trace
         public double Trace()
         {
-            get (0);
+            if (_matrice.EstCarre())
+            {
+                int n = _matrice.GetLength(0);
+                double trace = 0;
+                for(int i; i < n; i++)
+                {
+                    trace += _matrice[i,i];
+                }
+                return trace;            
+            }
+            else
+            {
+                Console.WriteLine("Matrice non carre");
+            }
         }
 
         //determinant
-        public double Determinant() { }
+        public double Determinant() {
+            if (_matrice.EstCarre())
+            {
+                
+            }
+        }
 
         public Matrice Transposee()
         {
@@ -124,7 +162,15 @@ namespace PIF1006Devoir1
 
         public bool EstCarree()
         {
+            get
+            {
+                if (_matrice.GetLength(0) == _matrice.GetLength(1))
+                    return true;
 
+                else
+                    return false;
+            }
+            
         }
 
         public bool EstReguliere() { }
