@@ -27,14 +27,14 @@ namespace PIF1006Devoir1
         //getter et setter de _matrice
         public double this[int i, int j]
         {
-            get { return _matrice[i, j];}
+            get { return _matrice[i, j]; }
             set { _matrice[i, j] = value; }
         }
 
         //méthode de vérification même format de matrice
         public bool VerifierFormatMatrice(Matrice matrice)
         {
-            if ( _matrice.GetLength(0) == matrice.GetLength(0) && _matrice.GetLength(1) == matrice.GetLength(1))
+            if (_matrice.GetLength(0) == matrice.GetLength(0) && _matrice.GetLength(1) == matrice.GetLength(1))
             {
                 return true;
             }
@@ -46,9 +46,9 @@ namespace PIF1006Devoir1
         public bool VerifierColonneAcommeLigneB(Matrice matrice)
         {
             if (_matrice.GetLength(1) == matrice.GetLength(0))
-            return true;
+                return true;
             else
-            return false;
+                return false;
         }
 
         //méthode d'addition de matrice
@@ -61,7 +61,7 @@ namespace PIF1006Devoir1
                     for (var j = 0; j < matrice.GetLength(1); j++)
                         addition[i, j] = matrice[i, j] + matrice[i, j];
 
-                return addition;    
+                return addition;
             }
             else
             {
@@ -74,12 +74,12 @@ namespace PIF1006Devoir1
         {
             int x = _matrice.GetLength(0);
             int y = _matrice.GetLength(1);
-            Matrice produitScalaire = new Matrice(new double[x,y]);
+            Matrice produitScalaire = new Matrice(new double[x, y]);
             for (int i = 0; i < x; i++)
             {
                 for (int j = 0; j < y; j++)
                 {
-                    produitScalaire[i, j] = _matrice[i, j] * scalaire;
+                    produitScalaire[i, j] = _matrice[i, j]*scalaire;
                 }
             }
 
@@ -89,33 +89,33 @@ namespace PIF1006Devoir1
         //méthode du produit matriciel
         public Matrice FaireProduitMatriciel(Matrice matrice)
         {
-                //si le nombre de colonnes de A est égal au nombre de lignes de B
+            //si le nombre de colonnes de A est égal au nombre de lignes de B
             if (VerifierColonneAcommeLigneB(matrice))
             {
-                    var n = _matrice.GetLength(0);
-                    var p = matrice.GetLength(1);
+                var n = _matrice.GetLength(0);
+                var p = matrice.GetLength(1);
 
-                    var produitMatriciel = new Matrice(new double[n, p]);
+                var produitMatriciel = new Matrice(new double[n, p]);
 
-                    for (var i = 0; i < n; i++)
-                        for (var j = 0; j < p; j++)
-                        {
-                            produitMatriciel[i, j] = 0;
-                            for (var z = 0; z < n; z++)
-                                produitMatriciel[i, j] += _matrice[i, z]*matrice[z, j];
-                        }
-                    return produitMatriciel;  
+                for (var i = 0; i < n; i++)
+                    for (var j = 0; j < p; j++)
+                    {
+                        produitMatriciel[i, j] = 0;
+                        for (var z = 0; z < n; z++)
+                            produitMatriciel[i, j] += _matrice[i, z]*matrice[z, j];
+                    }
+                return produitMatriciel;
             }
             else
-                {
-                    Console.WriteLine("Produit de ces deux matrices non possible");
-                    return null;
-                }
-                
+            {
+                Console.WriteLine("Produit de ces deux matrices non possible");
+                return null;
+            }
+
         }
 
         //TODO a completer
-        
+
         public Matrice FaireProduitMatriciel(out int operations, params Matrice[] matrices)
         {
             operations = 0;
@@ -127,7 +127,7 @@ namespace PIF1006Devoir1
             }
             return temp;
         }
-        
+
 
         //méthode vérification si triangulaire
         /// <summary>
@@ -143,24 +143,24 @@ namespace PIF1006Devoir1
             bool stricte = true;
 
             for (var i = 0; i < this.GetLength(0); i++)
+            {
+                for (var j = 0; j < this.GetLength(1); j++)
                 {
-                    for (var j = 0; j < this.GetLength(1); j++)
+                    if (i > j && (this[i, j] != 0))
                     {
-                        if (i > j && (this[i, j] != 0))
-                        {
-                            superieure = false;
-                        }
-                        if(i < j && (this[i, j] != 0))
-                        {
-                            inferieure = false;
-                        }
-                        if (i == j && (this[i, j] != 0))
-                        {
-                            stricte = false;
-                        }
+                        superieure = false;
                     }
-                    
+                    if (i < j && (this[i, j] != 0))
+                    {
+                        inferieure = false;
+                    }
+                    if (i == j && (this[i, j] != 0))
+                    {
+                        stricte = false;
+                    }
                 }
+
+            }
             if (estStricte == true)
             {
                 if (stricte == false) return false;
@@ -177,35 +177,20 @@ namespace PIF1006Devoir1
 
         }
 
-        //trace
+        //propriété trace
         public double Trace
-        {  
+        {
             get
             {
                 double trace = 0;
-                for (int i = 0; i<_matrice.GetLength(0); i++)
+                for (int i = 0; i < _matrice.GetLength(0); i++)
                 {
                     trace += _matrice[i, i];
                 }
                 return trace;
             }
         }
-
-        //méthode de calcul du déterminant pour matrice d'ordre 2
-        public double CalculDeterminant()
-        {
-            try
-            {
-                return (this[0, 0]*this[1, 1]) - (this[0, 1]*this[1, 0]);
-            }
-            catch (Exception)
-            {
-                Console.WriteLine("Un problème est survenu lors du calcul du déterminant");
-                throw;
-            }
-          
-        }
-
+ 
         //vérifie si complement doit être positif
         public bool SigneComplement(int i, int j)
         {
@@ -213,82 +198,151 @@ namespace PIF1006Devoir1
             return positif;
         }
 
+        //méthode d'affichage d'une matrice
+        public void AfficheMatrice()
+        {
+            for (int i = 0; i < this.GetLength(0); i++)
+            {
+                for (int j = 0; j < this.GetLength(1); j++)
+                {
+                    if (j==0) Console.Write(" |  ");
+                    Console.Write(this[i,j]+"  ");
+                    if (j == this.GetLength(1)-1) Console.Write("| ");
+
+                }
+                Console.WriteLine();
+            }
+        }
 
         //méthode d'obtebtention de la mineure
         public Matrice Mineure(int i, int j)
         {
-            var mineure = new Matrice(new double[this.GetLength(0)-1, this.GetLength(1)-1]);
+            Matrice mineure = new Matrice(new double[this.GetLength(0) - 1, this.GetLength(1) - 1]);
+            Matrice mineureTmp = new Matrice(new double[this.GetLength(0), this.GetLength(1)]);
             for (int k = 0; k < this.GetLength(0); k++)
             {
                 for (int l = 0; l < this.GetLength(1); l++)
                 {
-                    if (l > j)
+                    mineureTmp[k, l] = this[k, l];
+                    if (l > j && k > i)
                     {
-                        mineure[k, l - 1] = this[k, l];
+                        mineureTmp[k - 1, l - 1] = this[k, l];
                     }
-                    else mineure[k, l] = this[k, l];
-                    if (k > i)
+                    else if (l > j)
                     {
-                        mineure[k-1, l] = this[k, l];
+                        mineureTmp[k, l - 1] = this[k, l];
                     }
-                    else mineure[k, l] = this[k, l];
+                    else if (k > i)
+                    {
+                        mineureTmp[k - 1, l] = this[k, l];
+                    }
+
+                }
+            }
+            for (int k = 0; k < mineure.GetLength(0); k++)
+            {
+                for (int l = 0; l < mineure.GetLength(1); l++)
+                {
+                    mineure[k, l] = mineureTmp[k, l];
                 }
             }
             return mineure;
         }
 
-        //determinant
+        //méthode de calcul du determinant
+        private double CalculDeterminant(Matrice a, int n)
+        {
+            {  
+                int p, h, k, i, j;
+                double det=0;
+                Matrice temp = new Matrice(new double[n, n]);
+
+                if (n == 1)
+                {
+                    return a[0,0];
+                }
+                else if (n == 2)
+                {
+                    det = (a[0, 0] * a[1, 1] - a[0, 1] * a[1, 0]);
+                    return det;
+                }
+                else
+                {
+                    for (p = 0; p < n; p++)
+                    {
+                        h = 0;
+                        k = 0;
+                        for (i = 1; i < n; i++)
+                        {
+                            for (j = 0; j < n; j++)
+                            {
+                                if (j == p)
+                                {
+                                    continue;
+                                }
+                                temp[h,k] = a[i,j];
+                                k++;
+                                if (k == n - 1)
+                                {
+                                    h++;
+                                    k = 0;
+                                }
+                            }
+                        }
+                        det = det + a[0,p]*Math.Pow(-1, p)*CalculDeterminant(temp, n - 1);
+                    }
+                    return det;
+                }
+            }
+        }
+
+        //propriété determinant
         public double Determinant {
             get
             {
                 if (EstCarree == true)
                 {
-                    //si n=1
-                    if (this.GetLength(0) == 1) return _matrice[0, 0];
-
-                    //si n=2
-                    else if (this.GetLength(0) == 2) return this.CalculDeterminant();
-
-                    //si n=3
-                    else if (this.GetLength(0) > 2)
-                    {
-                        double determinant=0;
-                        for (int j = 0; j < this.GetLength(0); j++)
-                        {
-                            if (SigneComplement(1, j+1) == true) { 
-                                determinant += (this.Mineure(0, j)).CalculDeterminant();
-                            }
-                            else
-                            {
-                                determinant -= (this.Mineure(0, j)).CalculDeterminant();
-                            }
-                        }
-                        return determinant;
-                    }
-                    
-
+                    return CalculDeterminant(this, this.GetLength(0));
                 }
                     
-
-                else Console.WriteLine("La matrice n'est pas carrée");
-                return 0;
-
-            }
+                else  Console.WriteLine("La matrice n'est pas carrée");
+                    return 0;
+                }
         }
 
+        //transposée
         public Matrice Transposee
         {
             get
             {
-                return null;
+                Matrice transposee = new Matrice(new double[this.GetLength(1), this.GetLength(0)]);
+                for (int i = 0; i < this.GetLength(0); i++)
+                {
+                    for (int j = 0; j < this.GetLength(1); j++)
+                    {
+                        transposee[j, i] = this[i, j];
+                    }
+                }
+                return transposee;
             }
         }
 
+        //TODO pas finie
         public Matrice CoMatrice
         {
             get
             {
-                return null;
+                if (EstCarree == true)
+                {
+                    Matrice comatrice = new Matrice(new double[this.GetLength(0), this.GetLength(1)]);
+                    return null;
+                }
+                else
+                {
+                    Console.WriteLine("La matrice n'est pas carrée");
+                    return null;
+                }
+              
             }
         }
 
