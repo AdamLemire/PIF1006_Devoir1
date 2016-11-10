@@ -198,7 +198,7 @@ namespace PIF1006Devoir1
             {
                 return (this[0, 0]*this[1, 1]) - (this[0, 1]*this[1, 0]);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 Console.WriteLine("Un problème est survenu lors du calcul du déterminant");
                 throw;
@@ -206,11 +206,35 @@ namespace PIF1006Devoir1
           
         }
 
-        //méthode du complément algébrique
-        public double Complement()
+        //vérifie si complement doit être positif
+        public bool SigneComplement(int i, int j)
         {
-            
-            return 0;
+            bool positif = (((i + j)%2) == 0 ? true : false);
+            return positif;
+        }
+
+
+        //méthode d'obtebtention de la mineure
+        public Matrice Mineure(int i, int j)
+        {
+            var mineure = new Matrice(new double[this.GetLength(0)-1, this.GetLength(1)-1]);
+            for (int k = 0; k < this.GetLength(0); k++)
+            {
+                for (int l = 0; l < this.GetLength(1); l++)
+                {
+                    if (l > j)
+                    {
+                        mineure[k, l - 1] = this[k, l];
+                    }
+                    else mineure[k, l] = this[k, l];
+                    if (k > i)
+                    {
+                        mineure[k-1, l] = this[k, l];
+                    }
+                    else mineure[k, l] = this[k, l];
+                }
+            }
+            return mineure;
         }
 
         //determinant
@@ -223,7 +247,24 @@ namespace PIF1006Devoir1
                     if (this.GetLength(0) == 1) return _matrice[0, 0];
 
                     //si n=2
-                    else if (this.GetLength(0) == 2) return ((_matrice[0, 0] * _matrice[1, 1]) - (_matrice[0, 1] * _matrice[1, 0])) ;
+                    else if (this.GetLength(0) == 2) return this.CalculDeterminant();
+
+                    //si n=3
+                    else if (this.GetLength(0) > 2)
+                    {
+                        double determinant=0;
+                        for (int j = 0; j < this.GetLength(0); j++)
+                        {
+                            if (SigneComplement(1, j+1) == true) { 
+                                determinant += (this.Mineure(0, j)).CalculDeterminant();
+                            }
+                            else
+                            {
+                                determinant -= (this.Mineure(0, j)).CalculDeterminant();
+                            }
+                        }
+                        return determinant;
+                    }
                     
 
                 }
