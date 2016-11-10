@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -15,6 +16,13 @@ namespace PIF1006Devoir1
         public Matrice(double[,] matrice)
         {
             this._matrice = matrice;
+        }
+
+        //getter et setter de _matrice
+        public double this[int i, int j]
+        {
+            get { return _matrice[i, j]; }
+            set { _matrice[i, j] = value; }
         }
 
         //méthode d'addition de matrice
@@ -105,7 +113,7 @@ namespace PIF1006Devoir1
         importe, et un second paramètre doit indiquer soit on souhaite vérifier si elle
         est triangulaire stricte ou non.
          * */
-        public bool EstTriangulaire(String triangulaireInfSup, String triangulaireStrict)
+    /*    public bool EstTriangulaire(String triangulaireInfSup, String triangulaireStrict)
         {
             //triangulaire inferieur strict           
             //
@@ -121,7 +129,7 @@ namespace PIF1006Devoir1
                 }     
             }
 
-        }
+        }*/
 
         //trace
         public double Trace()
