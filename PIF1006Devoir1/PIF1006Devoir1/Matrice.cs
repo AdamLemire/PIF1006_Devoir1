@@ -146,7 +146,25 @@ namespace PIF1006Devoir1
         public double Determinant() {
             if (_matrice.EstCarre())
             {
-                
+                int n = _matrice.GetLength(0);
+                double det;
+                for(int i = 0; i < n - 1; i++)
+                {
+                    for(int j = i + 1; i < n; j++)
+                    {
+                        det = _matrice[j, i] / _matrice[i,i];
+                        for(int k = 1; k < n; k++)
+                        {
+                            _matrice[j, k] -= det * _matrice[i, k];
+                        }
+                    }
+                }
+
+                det = 0;
+                for(int i = 0; i < n; i++)
+                {
+                    det *= _matrice[i, i];
+                }      
             }
         }
 
@@ -162,18 +180,16 @@ namespace PIF1006Devoir1
 
         public bool EstCarree()
         {
-            get
-            {
                 if (_matrice.GetLength(0) == _matrice.GetLength(1))
                     return true;
 
                 else
                     return false;
-            }
-            
-        }
+       }
 
-        public bool EstReguliere() { }
+        public bool EstReguliere() {
+
+        }
 
 
        /* //affichage du tableau final
