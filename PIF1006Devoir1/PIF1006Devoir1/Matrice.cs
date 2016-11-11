@@ -92,6 +92,7 @@ namespace PIF1006Devoir1
             //si le nombre de colonnes de A est égal au nombre de lignes de B
             if (VerifierColonneAcommeLigneB(matrice))
             {
+                
                 var n = _matrice.GetLength(0);
                 var p = matrice.GetLength(1);
 
@@ -102,8 +103,11 @@ namespace PIF1006Devoir1
                     {
                         produitMatriciel[i, j] = 0;
                         for (var z = 0; z < n; z++)
+                        { 
                             produitMatriciel[i, j] += _matrice[i, z]*matrice[z, j];
-                    }
+                           
+                        }
+                }
                 return produitMatriciel;
             }
             else
@@ -114,20 +118,19 @@ namespace PIF1006Devoir1
 
         }
 
-        //TODO a completer
-
+        //méthode du produit matriciel multiple
         public Matrice FaireProduitMatriciel(out int operations, params Matrice[] matrices)
         {
             operations = 0;
             Matrice temp = this;
             for (int i = 0; i < matrices.Length; i++)
             {
+                operations += temp.GetLength(0) * temp.GetLength(1) * matrices[i].GetLength(1);
                 temp = temp.FaireProduitMatriciel(matrices[i]);
-                operations++;
+                
             }
             return temp;
         }
-
 
         //méthode vérification si triangulaire
         /// <summary>
@@ -201,18 +204,22 @@ namespace PIF1006Devoir1
         //méthode d'affichage d'une matrice
         public void AfficheMatrice()
         {
-            for (int i = 0; i < this.GetLength(0); i++)
+            if (this != null)
             {
-                for (int j = 0; j < this.GetLength(1); j++)
+            
+                for (int i = 0; i < this.GetLength(0); i++)
                 {
-                    if (j==0) Console.Write(" |  ");
-                    Console.Write(this[i,j]+"  ");
-                    if (j == this.GetLength(1)-1) Console.Write("| ");
-
+                    for (int j = 0; j < this.GetLength(1); j++)
+                    {
+                        if (j == 0) Console.Write(" |  ");
+                        Console.Write(this[i, j] + "  ");
+                        if (j == this.GetLength(1) - 1) Console.Write("| ");
+                    }
+                    Console.WriteLine();
                 }
-                Console.WriteLine();
             }
-        }
+
+    }
 
         //méthode d'obtebtention de la mineure
         public Matrice Mineure(int i, int j)
@@ -310,7 +317,7 @@ namespace PIF1006Devoir1
                 }
         }
 
-        //transposée
+        //propriété transposée
         public Matrice Transposee
         {
             get
@@ -327,15 +334,29 @@ namespace PIF1006Devoir1
             }
         }
 
-        //TODO pas finie
-        public Matrice CoMatrice
+        //propriété Comatrice
+        public Matrice Comatrice
         {
             get
             {
                 if (EstCarree == true)
                 {
                     Matrice comatrice = new Matrice(new double[this.GetLength(0), this.GetLength(1)]);
-                    return null;
+                    for (int i = 0; i < this.GetLength(0); i++)
+                    {
+                        for (int j = 0; j < this.GetLength(1); j++)
+                        {
+                            if ((i + j)%2 == 0)
+                            {
+                                comatrice[i, j] = (this.Mineure(i, j)).Determinant;
+                            }
+                            else
+                            {
+                                comatrice[i, j] = -(this.Mineure(i, j)).Determinant;
+                            }
+                        }
+                    }
+                    return comatrice;
                 }
                 else
                 {
@@ -346,10 +367,29 @@ namespace PIF1006Devoir1
             }
         }
 
+        //propriété MatriceInverse
         public Matrice MatriceInverse {
             get
             {
-                return null;
+                if (EstCarree == true)
+                {
+                    if (this.EstReguliere == true)
+                    {
+                        Matrice inverse = new Matrice(new double[this.GetLength(0), this.GetLength(1)]);
+                        inverse = ((this.Comatrice).Transposee).FaireProduitScalaire(1/this.Determinant);
+                        return inverse;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Le déterminant de la matrice est 0, donc impossible d'inverser la matrice");
+                        return null;
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("La matrice n'est pas carrée");
+                    return null;
+                }
             }
         }
 
@@ -359,14 +399,15 @@ namespace PIF1006Devoir1
             {
                 if (_matrice.GetLength(0) == _matrice.GetLength(1))
                     return true;
-                else return false;
+                return false;
             }
         }
 
         public bool EstReguliere {
             get
             {
-                return false;
+                if (this.Determinant != 0) return true;
+                else return false;
             }
         }
 
