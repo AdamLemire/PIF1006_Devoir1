@@ -65,7 +65,8 @@ namespace PIF1006Devoir1
             }
             else
             {
-                return null;
+                Console.WriteLine("Format de matrice incorrect");
+                return new Matrice(new double[0, 0]);
             }
         }
 
@@ -112,8 +113,8 @@ namespace PIF1006Devoir1
             }
             else
             {
-                Console.WriteLine("Produit de ces deux matrices non possible");
-                return null;
+                Console.WriteLine("Format de matrice incorrect");
+                return new Matrice(new double[0, 0]);
             }
 
         }
@@ -204,9 +205,6 @@ namespace PIF1006Devoir1
         //méthode d'affichage d'une matrice
         public void AfficheMatrice()
         {
-            if (this != null)
-            {
-            
                 for (int i = 0; i < this.GetLength(0); i++)
                 {
                     for (int j = 0; j < this.GetLength(1); j++)
@@ -217,9 +215,7 @@ namespace PIF1006Devoir1
                     }
                     Console.WriteLine();
                 }
-            }
-
-    }
+        }
 
         //méthode d'obtebtention de la mineure
         public Matrice Mineure(int i, int j)
@@ -339,7 +335,7 @@ namespace PIF1006Devoir1
         {
             get
             {
-                if (EstCarree == true)
+                if (EstCarree)
                 {
                     Matrice comatrice = new Matrice(new double[this.GetLength(0), this.GetLength(1)]);
                     for (int i = 0; i < this.GetLength(0); i++)
@@ -360,8 +356,8 @@ namespace PIF1006Devoir1
                 }
                 else
                 {
-                    Console.WriteLine("La matrice n'est pas carrée");
-                    return null;
+                    Console.WriteLine("Format de matrice incorrect");
+                    return new Matrice(new double[ 0,0]);                 
                 }
               
             }
@@ -407,7 +403,7 @@ namespace PIF1006Devoir1
             get
             {
                 if (this.Determinant != 0) return true;
-                else return false;
+                return false;
             }
         }
 
