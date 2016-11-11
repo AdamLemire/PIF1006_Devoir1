@@ -1,4 +1,7 @@
-﻿using System;
+﻿//Devoir 1 PIF1006 - 10 novembre 2016
+//Adam Lemire et Rémi Petiteau
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
