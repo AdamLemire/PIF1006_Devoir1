@@ -186,13 +186,25 @@ namespace PIF1006Devoir1
         {
             get
             {
-                double trace = 0;
-                for (int i = 0; i < _matrice.GetLength(0); i++)
+                if (EstCarree)
                 {
-                    trace += _matrice[i, i];
+                    double trace = 0;
+                    for (int i = 0; i < _matrice.GetLength(0); i++)
+                    {
+                        trace += _matrice[i, i];
+                    }
+                    return trace;
                 }
-                return trace;
+                else
+                {
+                     Console.WriteLine("Format de matrice incorrect");
+                     return 0;
+                }
+                
+
+
             }
+
         }
  
         //vérifie si complement doit être positif
