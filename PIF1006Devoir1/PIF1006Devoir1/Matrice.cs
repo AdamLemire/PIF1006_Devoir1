@@ -422,6 +422,19 @@ namespace PIF1006Devoir1
             }
         }
 
-
+        //méthode de copie de la matrice
+        public Matrice CopierMatrice()
+        {
+            
+            Matrice copie = new Matrice(new double[_matrice.GetLength(0), _matrice.GetLength(1)]);
+            for (int i = 0; i < _matrice.GetLength(0); i++)
+            {
+                for (int j = 0; j < _matrice.GetLength(1); j++)
+                {
+                    copie[i, j] = _matrice[i, j];
+                }
+            }
+            return copie;
+        }
     }
 }

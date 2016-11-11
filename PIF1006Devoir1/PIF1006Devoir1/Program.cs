@@ -23,6 +23,14 @@ namespace PIF1006Devoir1
                 Matrice matrice6 = new Matrice(new double[3, 3] {{1, 2, -1}, {-2, 1, 1}, {0, 3, -3}});
                 Matrice matrice7 = new Matrice(new double[4, 4] { { 0, 2, 8, 3 }, { 0, 0, 7, 5 }, { 0, 0,0, 5 }, { 0, 0, 0, 0 } });
 
+                Matrice matriceA = new Matrice(new double[3, 3] { { 1,3,4 }, { 3,5,-4 }, {4,7,-2} });
+                Matrice matriceB = new Matrice(new double[3, 1] { {50 }, { 2 }, {31} });
+                Systeme systeme1 = new Systeme(matriceA, matriceB);
+
+            Matrice matriceC = new Matrice(new double[3, 3] { { 1,1,-2 }, {4,-1,2 }, { 2,-6,3} });
+            Matrice matriceD = new Matrice(new double[3, 1] { { 0 }, { 0 }, { 0 } });
+            Systeme systeme2 = new Systeme(matriceC, matriceD);
+
 
 
             //Additionner
@@ -91,11 +99,20 @@ namespace PIF1006Devoir1
             Console.WriteLine("La matrice 3 est elle reguliere ? " + o);
             Console.WriteLine();
 
+            Console.WriteLine("--------------Méthode de CRAMER----------------");
+            systeme1.TrouverXParCramer().AfficheMatrice();
+            Console.WriteLine();
+            systeme2.TrouverXParCramer().AfficheMatrice();
+           
 
+            Console.WriteLine("--------------Méthode d'inversion matricielle----------------");
+            systeme1.TrouverXParInversionMatricielle().AfficheMatrice();
+
+            Console.WriteLine();
             Console.WriteLine("Appuyer sur Enter pour fermer");
-
-                Console.ReadLine();
+            Console.ReadLine();
             
+            //MODIFIER POUR QUE L'UTILISATEUR PUISSE ENTRER SES PROPRES MATRICES
 
         }
     }
