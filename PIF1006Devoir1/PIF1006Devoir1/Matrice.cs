@@ -268,48 +268,50 @@ namespace PIF1006Devoir1
         }
 
         //méthode de calcul du determinant
-        private double CalculDeterminant(Matrice a, int n)
+        private double CalculDeterminant(Matrice matrice, int ordre)
         {
             {  
                 int p, h, k, i, j;
-                double det=0;
-                Matrice temp = new Matrice(new double[n, n]);
+                double determinant=0;
+                Matrice temp = new Matrice(new double[ordre, ordre]);
 
-                if (n == 1)
+                if (ordre == 1)
                 {
-                    return a[0,0];
+                    return matrice[0,0];
                 }
-                else if (n == 2)
+                else if (ordre == 2)
                 {
-                    det = (a[0, 0] * a[1, 1] - a[0, 1] * a[1, 0]);
-                    return det;
+                    determinant = (matrice[0, 0] * matrice[1, 1] - matrice[0, 1] * matrice[1, 0]);
+                    return determinant;
                 }
+
+                //pour matrice d'ordre > 2
                 else
                 {
-                    for (p = 0; p < n; p++)
+                    for (p = 0; p < ordre; p++)
                     {
                         h = 0;
                         k = 0;
-                        for (i = 1; i < n; i++)
+                        for (i = 1; i < ordre; i++)
                         {
-                            for (j = 0; j < n; j++)
+                            for (j = 0; j < ordre; j++)
                             {
                                 if (j == p)
                                 {
                                     continue;
                                 }
-                                temp[h,k] = a[i,j];
+                                temp[h,k] = matrice[i,j];
                                 k++;
-                                if (k == n - 1)
+                                if (k == ordre - 1)
                                 {
                                     h++;
                                     k = 0;
                                 }
                             }
                         }
-                        det = det + a[0,p]*Math.Pow(-1, p)*CalculDeterminant(temp, n - 1);
+                        determinant = determinant + matrice[0,p]*Math.Pow(-1, p)*CalculDeterminant(temp, ordre - 1);
                     }
-                    return det;
+                    return determinant;
                 }
             }
         }
