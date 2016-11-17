@@ -1,0 +1,14 @@
+D:\Dropbox\UQTR\PIF1006 - Math pour info 2\PIF1006_Devoir1\Devoir1_APP\PIF1006Devoir1_App\PIF1006Devoir1_App\bin\Debug\PIF1006Devoir1_App.exe.config
+D:\Dropbox\UQTR\PIF1006 - Math pour info 2\PIF1006_Devoir1\Devoir1_APP\PIF1006Devoir1_App\PIF1006Devoir1_App\bin\Debug\PIF1006Devoir1_App.exe
+D:\Dropbox\UQTR\PIF1006 - Math pour info 2\PIF1006_Devoir1\Devoir1_APP\PIF1006Devoir1_App\PIF1006Devoir1_App\bin\Debug\PIF1006Devoir1_App.pdb
+D:\Dropbox\UQTR\PIF1006 - Math pour info 2\PIF1006_Devoir1\Devoir1_APP\PIF1006Devoir1_App\PIF1006Devoir1_App\obj\Debug\MainWindow.g.cs
+D:\Dropbox\UQTR\PIF1006 - Math pour info 2\PIF1006_Devoir1\Devoir1_APP\PIF1006Devoir1_App\PIF1006Devoir1_App\obj\Debug\App.g.cs
+D:\Dropbox\UQTR\PIF1006 - Math pour info 2\PIF1006_Devoir1\Devoir1_APP\PIF1006Devoir1_App\PIF1006Devoir1_App\obj\Debug\PIF1006Devoir1_App_MarkupCompile.cache
+D:\Dropbox\UQTR\PIF1006 - Math pour info 2\PIF1006_Devoir1\Devoir1_APP\PIF1006Devoir1_App\PIF1006Devoir1_App\obj\Debug\PIF1006Devoir1_App_MarkupCompile.lref
+D:\Dropbox\UQTR\PIF1006 - Math pour info 2\PIF1006_Devoir1\Devoir1_APP\PIF1006Devoir1_App\PIF1006Devoir1_App\obj\Debug\MainWindow.baml
+D:\Dropbox\UQTR\PIF1006 - Math pour info 2\PIF1006_Devoir1\Devoir1_APP\PIF1006Devoir1_App\PIF1006Devoir1_App\obj\Debug\PIF1006Devoir1_App.g.resources
+D:\Dropbox\UQTR\PIF1006 - Math pour info 2\PIF1006_Devoir1\Devoir1_APP\PIF1006Devoir1_App\PIF1006Devoir1_App\obj\Debug\PIF1006Devoir1_App.Properties.Resources.resources
+D:\Dropbox\UQTR\PIF1006 - Math pour info 2\PIF1006_Devoir1\Devoir1_APP\PIF1006Devoir1_App\PIF1006Devoir1_App\obj\Debug\PIF1006Devoir1_App.csproj.GenerateResource.Cache
+D:\Dropbox\UQTR\PIF1006 - Math pour info 2\PIF1006_Devoir1\Devoir1_APP\PIF1006Devoir1_App\PIF1006Devoir1_App\obj\Debug\PIF1006Devoir1_App.exe
+D:\Dropbox\UQTR\PIF1006 - Math pour info 2\PIF1006_Devoir1\Devoir1_APP\PIF1006Devoir1_App\PIF1006Devoir1_App\obj\Debug\PIF1006Devoir1_App.pdb
+D:\Dropbox\UQTR\PIF1006 - Math pour info 2\PIF1006_Devoir1\Devoir1_APP\PIF1006Devoir1_App\PIF1006Devoir1_App\obj\Debug\PIF1006Devoir1_App.csprojResolveAssemblyReference.cache

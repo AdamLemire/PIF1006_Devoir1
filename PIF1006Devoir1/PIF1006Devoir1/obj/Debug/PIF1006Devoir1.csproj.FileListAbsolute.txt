@@ -10,3 +10,14 @@ C:\Users\petiteau\Desktop\PIF1006_Devoir1\PIF1006Devoir1\PIF1006Devoir1\obj\Debu
 C:\Users\petiteau\Desktop\PIF1006_Devoir1\PIF1006Devoir1\PIF1006Devoir1\bin\Debug\PIF1006Devoir1.exe
 C:\Users\petiteau\Desktop\PIF1006_Devoir1\PIF1006Devoir1\PIF1006Devoir1\bin\Debug\PIF1006Devoir1.pdb
 C:\Users\petiteau\Desktop\PIF1006_Devoir1\PIF1006Devoir1\PIF1006Devoir1\obj\Debug\PIF1006Devoir1.csprojResolveAssemblyReference.cache
+D:\Dropbox\UQTR\PIF1006 - Math pour info 2\PIF1006_Devoir1\PIF1006Devoir1\PIF1006Devoir1\bin\Debug\PIF1006Devoir1.exe.config
+D:\Dropbox\UQTR\PIF1006 - Math pour info 2\PIF1006_Devoir1\PIF1006Devoir1\PIF1006Devoir1\obj\Debug\PIF1006Devoir1.exe
+D:\Dropbox\UQTR\PIF1006 - Math pour info 2\PIF1006_Devoir1\PIF1006Devoir1\PIF1006Devoir1\obj\Debug\PIF1006Devoir1.pdb
+D:\Dropbox\UQTR\PIF1006 - Math pour info 2\PIF1006_Devoir1\PIF1006Devoir1\PIF1006Devoir1\obj\Debug\PIF1006Devoir1.csprojResolveAssemblyReference.cache
+D:\Dropbox\UQTR\PIF1006 - Math pour info 2\PIF1006_Devoir1\PIF1006Devoir1\PIF1006Devoir1\obj\Debug\PIF1006Devoir1_MarkupCompile.cache
+D:\Dropbox\UQTR\PIF1006 - Math pour info 2\PIF1006_Devoir1\PIF1006Devoir1\PIF1006Devoir1\bin\Debug\PIF1006Devoir1.exe
+D:\Dropbox\UQTR\PIF1006 - Math pour info 2\PIF1006_Devoir1\PIF1006Devoir1\PIF1006Devoir1\bin\Debug\PIF1006Devoir1.pdb
+D:\Dropbox\UQTR\PIF1006 - Math pour info 2\PIF1006_Devoir1\PIF1006Devoir1\PIF1006Devoir1\obj\Debug\Interface.g.cs
+D:\Dropbox\UQTR\PIF1006 - Math pour info 2\PIF1006_Devoir1\PIF1006Devoir1\PIF1006Devoir1\obj\Debug\PIF1006Devoir1_MarkupCompile.lref
+D:\Dropbox\UQTR\PIF1006 - Math pour info 2\PIF1006_Devoir1\PIF1006Devoir1\PIF1006Devoir1\obj\Debug\Interface.baml
+D:\Dropbox\UQTR\PIF1006 - Math pour info 2\PIF1006_Devoir1\PIF1006Devoir1\PIF1006Devoir1\obj\Debug\PIF1006Devoir1.g.resources
