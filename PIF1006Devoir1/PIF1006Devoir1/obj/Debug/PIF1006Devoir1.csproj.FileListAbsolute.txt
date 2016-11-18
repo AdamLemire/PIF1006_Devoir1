@@ -21,3 +21,14 @@ D:\Dropbox\UQTR\PIF1006 - Math pour info 2\PIF1006_Devoir1\PIF1006Devoir1\PIF100
 D:\Dropbox\UQTR\PIF1006 - Math pour info 2\PIF1006_Devoir1\PIF1006Devoir1\PIF1006Devoir1\obj\Debug\PIF1006Devoir1_MarkupCompile.lref
 D:\Dropbox\UQTR\PIF1006 - Math pour info 2\PIF1006_Devoir1\PIF1006Devoir1\PIF1006Devoir1\obj\Debug\Interface.baml
 D:\Dropbox\UQTR\PIF1006 - Math pour info 2\PIF1006_Devoir1\PIF1006Devoir1\PIF1006Devoir1\obj\Debug\PIF1006Devoir1.g.resources
+X:\PIF1006_Devoir1\PIF1006Devoir1\PIF1006Devoir1\bin\Debug\PIF1006Devoir1.exe.config
+X:\PIF1006_Devoir1\PIF1006Devoir1\PIF1006Devoir1\obj\Debug\PIF1006Devoir1.exe
+X:\PIF1006_Devoir1\PIF1006Devoir1\PIF1006Devoir1\obj\Debug\PIF1006Devoir1.pdb
+X:\PIF1006_Devoir1\PIF1006Devoir1\PIF1006Devoir1\bin\Debug\PIF1006Devoir1.exe
+X:\PIF1006_Devoir1\PIF1006Devoir1\PIF1006Devoir1\bin\Debug\PIF1006Devoir1.pdb
+X:\PIF1006_Devoir1\PIF1006Devoir1\PIF1006Devoir1\obj\Debug\PIF1006Devoir1.csprojResolveAssemblyReference.cache
+X:\PIF1006_Devoir1\PIF1006Devoir1\PIF1006Devoir1\obj\Debug\Interface.g.cs
+X:\PIF1006_Devoir1\PIF1006Devoir1\PIF1006Devoir1\obj\Debug\PIF1006Devoir1_MarkupCompile.cache
+X:\PIF1006_Devoir1\PIF1006Devoir1\PIF1006Devoir1\obj\Debug\PIF1006Devoir1_MarkupCompile.lref
+X:\PIF1006_Devoir1\PIF1006Devoir1\PIF1006Devoir1\obj\Debug\Interface.baml
+X:\PIF1006_Devoir1\PIF1006Devoir1\PIF1006Devoir1\obj\Debug\PIF1006Devoir1.g.resources

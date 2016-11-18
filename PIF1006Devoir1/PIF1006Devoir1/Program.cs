@@ -32,6 +32,10 @@ namespace PIF1006Devoir1
             Matrice matriceD = new Matrice(new double[3, 1] { { 0 }, { 0 }, { 0 } });
             Systeme systeme2 = new Systeme(matriceC, matriceD);
 
+            Matrice matriceE = new Matrice(new double[3, 3] { { 4, -1, 0 }, { -1, 4, -1 }, { 0, -1, 4 } });
+            Matrice matriceF = new Matrice(new double[3, 1] { { 100 }, { 100 }, { 100 } });
+            Systeme systeme3 = new Systeme(matriceE, matriceF);
+
 
 
             //Additionner
@@ -108,6 +112,9 @@ namespace PIF1006Devoir1
 
             Console.WriteLine("--------------Méthode d'inversion matricielle----------------");
             systeme1.TrouverXParInversionMatricielle().AfficheMatrice();
+
+            Console.WriteLine("--------------Méthode de Jacobi----------------");
+            systeme3.TrouverXParJacobi(0.02).AfficheMatrice();
 
             Console.WriteLine();
             Console.WriteLine("Appuyer sur Enter pour fermer");
