@@ -9,14 +9,13 @@
     <Grid>
         <TextBox x:Name="LignesA" HorizontalAlignment="Left" Height="23" Margin="33,72,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="58" TextChanged="textBox_TextChanged"/>
         <TextBox x:Name="ColonnesA" HorizontalAlignment="Left" Height="23" Margin="119,72,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="58" TextChanged="textBox_TextChanged"/>
-        <Button x:Name="button" Content="OK" HorizontalAlignment="Left" Margin="195,72,0,0" VerticalAlignment="Top" Width="75" Click="button_Click"/>
-        
-        
+
+
         <TextBox x:Name="A1_1" HorizontalAlignment="Left" Height="23" Margin="33,124,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="25" RenderTransformOrigin="0.217,0.233" />
         <TextBox x:Name="A1_2" HorizontalAlignment="Left" Height="23" Margin="64,124,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="25" RenderTransformOrigin="0.217,0.233" />
         <TextBox x:Name="A2_1" HorizontalAlignment="Left" Height="23" Margin="33,152,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="25" RenderTransformOrigin="0.217,0.233" />
         <TextBox x:Name="A2_2" HorizontalAlignment="Left" Height="23" Margin="64,152,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="25" RenderTransformOrigin="0.217,0.233" />
-        <TextBlock x:Name="resultatsTxt" HorizontalAlignment="Left" Margin="33,296,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="73" Width="288"/>
+        <TextBlock x:Name="resultatsTxt" HorizontalAlignment="Left" Margin="349,327,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="220" Width="318"/>
         <Label x:Name="MatriceA" Content="Matrice A" HorizontalAlignment="Left" Margin="33,10,0,0" VerticalAlignment="Top" Width="131"/>
         <Label x:Name="label1" Content="Lignes (max 5)" HorizontalAlignment="Left" Margin="33,41,0,0" VerticalAlignment="Top"/>
         <Label x:Name="label1_Copy" Content="Colonnes (max 5)" HorizontalAlignment="Left" Margin="119,41,0,0" VerticalAlignment="Top"/>
@@ -43,6 +42,95 @@
         <TextBox x:Name="A5_3" HorizontalAlignment="Left" Height="23" Margin="94,236,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="25" RenderTransformOrigin="0.217,0.233" />
         <TextBox x:Name="A5_4" HorizontalAlignment="Left" Height="23" Margin="124,236,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="25" RenderTransformOrigin="0.217,0.233" />
         <TextBox x:Name="A5_5" HorizontalAlignment="Left" Height="23" Margin="154,236,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="25" RenderTransformOrigin="0.217,0.233" />
+        <Button x:Name="button1" Content="Button" HorizontalAlignment="Left" Margin="33,271,0,0" VerticalAlignment="Top" Width="75" Click="button1_Click"/>
+        <Grid Margin="221,0,-221,0">
+            <TextBox x:Name="LignesB" HorizontalAlignment="Left" Height="23" Margin="33,72,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="58" TextChanged="textBox_TextChanged"/>
+            <TextBox x:Name="ColonnesB" HorizontalAlignment="Left" Height="23" Margin="119,72,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="58" TextChanged="textBox_TextChanged"/>
+
+
+            <TextBox x:Name="B1_1" HorizontalAlignment="Left" Height="23" Margin="33,124,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="25" RenderTransformOrigin="0.217,0.233" />
+            <TextBox x:Name="B1_2" HorizontalAlignment="Left" Height="23" Margin="64,124,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="25" RenderTransformOrigin="0.217,0.233" />
+            <TextBox x:Name="B2_1" HorizontalAlignment="Left" Height="23" Margin="33,152,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="25" RenderTransformOrigin="0.217,0.233" />
+            <TextBox x:Name="B2_2" HorizontalAlignment="Left" Height="23" Margin="64,152,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="25" RenderTransformOrigin="0.217,0.233" />
+            <Label x:Name="MatriceB" Content="Matrice B" HorizontalAlignment="Left" Margin="33,10,0,0" VerticalAlignment="Top" Width="131"/>
+            <Label x:Name="label2" Content="Lignes (max 5)" HorizontalAlignment="Left" Margin="33,41,0,0" VerticalAlignment="Top"/>
+            <Label x:Name="label1_Copy1" Content="Colonnes (max 5)" HorizontalAlignment="Left" Margin="119,41,0,0" VerticalAlignment="Top"/>
+            <Button x:Name="EffacerB" Content="Effacer" HorizontalAlignment="Left" Margin="119,13,0,0" VerticalAlignment="Top" Width="75" Click="EffacerB_Click"/>
+            <Label x:Name="label3" Content="1        2         3       4       5" HorizontalAlignment="Left" Margin="33,100,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.252,0.079"/>
+            <TextBox x:Name="B3_1" HorizontalAlignment="Left" Height="23" Margin="33,180,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="25" RenderTransformOrigin="0.217,0.233" />
+            <TextBox x:Name="B4_1" HorizontalAlignment="Left" Height="23" Margin="33,208,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="25" RenderTransformOrigin="0.217,0.233" />
+            <TextBox x:Name="B5_1" HorizontalAlignment="Left" Height="23" Margin="33,236,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="25" RenderTransformOrigin="0.217,0.233" />
+            <TextBox x:Name="B1_3" HorizontalAlignment="Left" Height="23" Margin="94,124,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="25" RenderTransformOrigin="0.217,0.233" />
+            <TextBox x:Name="B1_4" HorizontalAlignment="Left" Height="23" Margin="124,124,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="25" RenderTransformOrigin="0.217,0.233" />
+            <TextBox x:Name="B1_5" HorizontalAlignment="Left" Height="23" Margin="154,124,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="25" RenderTransformOrigin="0.217,0.233" />
+            <TextBox x:Name="B2_3" HorizontalAlignment="Left" Height="23" Margin="94,152,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="25" RenderTransformOrigin="0.217,0.233" />
+            <TextBox x:Name="B2_4" HorizontalAlignment="Left" Height="23" Margin="124,152,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="25" RenderTransformOrigin="0.217,0.233" />
+            <TextBox x:Name="B2_5" HorizontalAlignment="Left" Height="23" Margin="154,152,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="25" RenderTransformOrigin="0.217,0.233" />
+            <TextBox x:Name="B3_2" HorizontalAlignment="Left" Height="23" Margin="64,180,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="25" RenderTransformOrigin="0.217,0.233" />
+            <TextBox x:Name="B4_2" HorizontalAlignment="Left" Height="23" Margin="64,208,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="25" RenderTransformOrigin="0.217,0.233" />
+            <TextBox x:Name="B3_3" HorizontalAlignment="Left" Height="23" Margin="94,180,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="25" RenderTransformOrigin="0.217,0.233" />
+            <TextBox x:Name="B3_4" HorizontalAlignment="Left" Height="23" Margin="124,180,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="25" RenderTransformOrigin="0.217,0.233" />
+            <TextBox x:Name="B3_5" HorizontalAlignment="Left" Height="23" Margin="154,180,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="25" RenderTransformOrigin="0.217,0.233" />
+            <TextBox x:Name="B4_3" HorizontalAlignment="Left" Height="23" Margin="94,208,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="25" RenderTransformOrigin="0.217,0.233" />
+            <TextBox x:Name="B4_4" HorizontalAlignment="Left" Height="23" Margin="124,208,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="25" RenderTransformOrigin="0.217,0.233" />
+            <TextBox x:Name="B4_5" HorizontalAlignment="Left" Height="23" Margin="154,208,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="25" RenderTransformOrigin="0.217,0.233" />
+            <TextBox x:Name="B5_2" HorizontalAlignment="Left" Height="23" Margin="64,236,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="25" RenderTransformOrigin="0.217,0.233" />
+            <TextBox x:Name="B5_3" HorizontalAlignment="Left" Height="23" Margin="94,236,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="25" RenderTransformOrigin="0.217,0.233" />
+            <TextBox x:Name="B5_4" HorizontalAlignment="Left" Height="23" Margin="124,236,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="25" RenderTransformOrigin="0.217,0.233" />
+            <TextBox x:Name="B5_5" HorizontalAlignment="Left" Height="23" Margin="154,236,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="25" RenderTransformOrigin="0.217,0.233" />
+            <Grid Margin="221,0,-221,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="362*"/>
+                    <RowDefinition Height="257*"/>
+                </Grid.RowDefinitions>
+                <TextBox x:Name="LignesC" HorizontalAlignment="Left" Height="23" Margin="33,72,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="58" TextChanged="textBox_TextChanged"/>
+                <TextBox x:Name="ColonnesC" HorizontalAlignment="Left" Height="23" Margin="119,72,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="58" TextChanged="textBox_TextChanged"/>
+
+
+                <TextBox x:Name="C1_1" HorizontalAlignment="Left" Height="23" Margin="33,124,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="25" RenderTransformOrigin="0.217,0.233" />
+                <TextBox x:Name="C1_2" HorizontalAlignment="Left" Height="23" Margin="64,124,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="25" RenderTransformOrigin="0.217,0.233" />
+                <TextBox x:Name="C2_1" HorizontalAlignment="Left" Height="23" Margin="33,152,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="25" RenderTransformOrigin="0.217,0.233" />
+                <TextBox x:Name="C2_2" HorizontalAlignment="Left" Height="23" Margin="64,152,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="25" RenderTransformOrigin="0.217,0.233" />
+                <Label x:Name="MatriceC" Content="Matrice C" HorizontalAlignment="Left" Margin="33,10,0,0" VerticalAlignment="Top" Width="131"/>
+                <Label x:Name="label4" Content="Lignes (max 5)" HorizontalAlignment="Left" Margin="33,41,0,0" VerticalAlignment="Top"/>
+                <Label x:Name="label1_Copy2" Content="Colonnes (max 5)" HorizontalAlignment="Left" Margin="119,41,0,0" VerticalAlignment="Top"/>
+                <Button x:Name="EffacerC" Content="Effacer" HorizontalAlignment="Left" Margin="119,13,0,0" VerticalAlignment="Top" Width="75" Click="EffacerC_Click"/>
+                <Label x:Name="label5" Content="1        2         3       4       5" HorizontalAlignment="Left" Margin="33,100,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.252,0.079"/>
+                <TextBox x:Name="C3_1" HorizontalAlignment="Left" Height="23" Margin="33,180,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="25" RenderTransformOrigin="0.217,0.233" />
+                <TextBox x:Name="C4_1" HorizontalAlignment="Left" Height="23" Margin="33,208,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="25" RenderTransformOrigin="0.217,0.233" />
+                <TextBox x:Name="C5_1" HorizontalAlignment="Left" Height="23" Margin="33,236,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="25" RenderTransformOrigin="0.217,0.233" />
+                <TextBox x:Name="C1_3" HorizontalAlignment="Left" Height="23" Margin="94,124,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="25" RenderTransformOrigin="0.217,0.233" />
+                <TextBox x:Name="C1_4" HorizontalAlignment="Left" Height="23" Margin="124,124,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="25" RenderTransformOrigin="0.217,0.233" />
+                <TextBox x:Name="C1_5" HorizontalAlignment="Left" Height="23" Margin="154,124,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="25" RenderTransformOrigin="0.217,0.233" />
+                <TextBox x:Name="C2_3" HorizontalAlignment="Left" Height="23" Margin="94,152,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="25" RenderTransformOrigin="0.217,0.233" />
+                <TextBox x:Name="C2_4" HorizontalAlignment="Left" Height="23" Margin="124,152,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="25" RenderTransformOrigin="0.217,0.233" />
+                <TextBox x:Name="C2_5" HorizontalAlignment="Left" Height="23" Margin="154,152,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="25" RenderTransformOrigin="0.217,0.233" />
+                <TextBox x:Name="C3_2" HorizontalAlignment="Left" Height="23" Margin="64,180,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="25" RenderTransformOrigin="0.217,0.233" />
+                <TextBox x:Name="C4_2" HorizontalAlignment="Left" Height="23" Margin="64,208,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="25" RenderTransformOrigin="0.217,0.233" />
+                <TextBox x:Name="C3_3" HorizontalAlignment="Left" Height="23" Margin="94,180,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="25" RenderTransformOrigin="0.217,0.233" />
+                <TextBox x:Name="C3_4" HorizontalAlignment="Left" Height="23" Margin="124,180,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="25" RenderTransformOrigin="0.217,0.233" />
+                <TextBox x:Name="C3_5" HorizontalAlignment="Left" Height="23" Margin="154,180,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="25" RenderTransformOrigin="0.217,0.233" />
+                <TextBox x:Name="C4_3" HorizontalAlignment="Left" Height="23" Margin="94,208,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="25" RenderTransformOrigin="0.217,0.233" />
+                <TextBox x:Name="C4_4" HorizontalAlignment="Left" Height="23" Margin="124,208,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="25" RenderTransformOrigin="0.217,0.233" />
+                <TextBox x:Name="C4_5" HorizontalAlignment="Left" Height="23" Margin="154,208,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="25" RenderTransformOrigin="0.217,0.233" />
+                <TextBox x:Name="C5_2" HorizontalAlignment="Left" Height="23" Margin="64,236,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="25" RenderTransformOrigin="0.217,0.233" />
+                <TextBox x:Name="C5_3" HorizontalAlignment="Left" Height="23" Margin="94,236,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="25" RenderTransformOrigin="0.217,0.233" />
+                <TextBox x:Name="C5_4" HorizontalAlignment="Left" Height="23" Margin="124,236,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="25" RenderTransformOrigin="0.217,0.233" />
+                <TextBox x:Name="C5_5" HorizontalAlignment="Left" Height="23" Margin="154,236,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="25" RenderTransformOrigin="0.217,0.233" />
+                <Button x:Name="IniMatriceC" Content="OK" HorizontalAlignment="Left" Margin="194,72,0,0" VerticalAlignment="Top" Width="27" Click="iniMatriceC_Click"/>
+
+
+            </Grid>
+            <Button x:Name="IniMatriceB" Content="OK" HorizontalAlignment="Left" Margin="194,72,0,0" VerticalAlignment="Top" Width="27" RenderTransformOrigin="-0.111,-1.1" Click="iniMatriceB_Click"/>
+            <Label x:Name="labelResultats" Content="Résultats :" HorizontalAlignment="Left" Margin="124,300,0,0" VerticalAlignment="Top"/>
+
+
+        </Grid>
+        <Button x:Name="IniMatriceA" Content="OK" HorizontalAlignment="Left" Margin="193,72,0,0" VerticalAlignment="Top" Width="28" Click="iniMatriceA_Click"/>
+        <Button x:Name="BtnAddition" Content="Addition de A et B" HorizontalAlignment="Left" Margin="33,327,0,0" VerticalAlignment="Top" Width="161" Click="BtnAddition_Click"/>
+        <Button x:Name="BtnProduitScalaire" Content="Produit de A par scalaire :" HorizontalAlignment="Left" Margin="33,365,0,0" VerticalAlignment="Top" Width="161" Click="BtnProduitScalaire_Click"/>
+        <TextBox x:Name="Scalaire" HorizontalAlignment="Left" Height="23" Margin="199,362,0,0" TextWrapping="Wrap" Text="Scalaire" GotFocus="Scalaire_GotFocus" VerticalAlignment="Top" Width="48"/>
+        <Button x:Name="BtnProduitMatriciel" Content="Produit Matriciel de A et B" HorizontalAlignment="Left" Margin="33,400,0,0" VerticalAlignment="Top" Width="161" Click="BtnProduitMatriciel_Click"/>
 
 
     </Grid>
