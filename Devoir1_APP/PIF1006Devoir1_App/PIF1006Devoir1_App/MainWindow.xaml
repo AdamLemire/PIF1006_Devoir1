@@ -15,12 +15,14 @@
         <TextBox x:Name="A1_2" HorizontalAlignment="Left" Height="23" Margin="64,124,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="25" RenderTransformOrigin="0.217,0.233" />
         <TextBox x:Name="A2_1" HorizontalAlignment="Left" Height="23" Margin="33,152,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="25" RenderTransformOrigin="0.217,0.233" />
         <TextBox x:Name="A2_2" HorizontalAlignment="Left" Height="23" Margin="64,152,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="25" RenderTransformOrigin="0.217,0.233" />
+
         <TextBlock x:Name="resultatsTxt" HorizontalAlignment="Left" Margin="349,327,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="220" Width="318"/>
+
         <Label x:Name="MatriceA" Content="Matrice A" HorizontalAlignment="Left" Margin="33,10,0,0" VerticalAlignment="Top" Width="131"/>
         <Label x:Name="label1" Content="Lignes (max 5)" HorizontalAlignment="Left" Margin="33,41,0,0" VerticalAlignment="Top"/>
         <Label x:Name="label1_Copy" Content="Colonnes (max 5)" HorizontalAlignment="Left" Margin="119,41,0,0" VerticalAlignment="Top"/>
         <Button x:Name="EffacerA" Content="Effacer" HorizontalAlignment="Left" Margin="119,13,0,0" VerticalAlignment="Top" Width="75" Click="EffacerA_Click"/>
-        <Label x:Name="label" Content="1        2         3       4       5" HorizontalAlignment="Left" Margin="33,100,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.252,0.079"/>
+        <Label x:Name="Nombres1" Content="1        2         3       4       5" HorizontalAlignment="Left" Margin="33,100,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.252,0.079"/>
         <TextBox x:Name="A3_1" HorizontalAlignment="Left" Height="23" Margin="33,180,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="25" RenderTransformOrigin="0.217,0.233" />
         <TextBox x:Name="A4_1" HorizontalAlignment="Left" Height="23" Margin="33,208,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="25" RenderTransformOrigin="0.217,0.233" />
         <TextBox x:Name="A5_1" HorizontalAlignment="Left" Height="23" Margin="33,236,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="25" RenderTransformOrigin="0.217,0.233" />
@@ -56,7 +58,7 @@
             <Label x:Name="label2" Content="Lignes (max 5)" HorizontalAlignment="Left" Margin="33,41,0,0" VerticalAlignment="Top"/>
             <Label x:Name="label1_Copy1" Content="Colonnes (max 5)" HorizontalAlignment="Left" Margin="119,41,0,0" VerticalAlignment="Top"/>
             <Button x:Name="EffacerB" Content="Effacer" HorizontalAlignment="Left" Margin="119,13,0,0" VerticalAlignment="Top" Width="75" Click="EffacerB_Click"/>
-            <Label x:Name="label3" Content="1        2         3       4       5" HorizontalAlignment="Left" Margin="33,100,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.252,0.079"/>
+            <Label x:Name="Nombres2" Content="1        2         3       4       5" HorizontalAlignment="Left" Margin="33,100,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.252,0.079"/>
             <TextBox x:Name="B3_1" HorizontalAlignment="Left" Height="23" Margin="33,180,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="25" RenderTransformOrigin="0.217,0.233" />
             <TextBox x:Name="B4_1" HorizontalAlignment="Left" Height="23" Margin="33,208,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="25" RenderTransformOrigin="0.217,0.233" />
             <TextBox x:Name="B5_1" HorizontalAlignment="Left" Height="23" Margin="33,236,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="25" RenderTransformOrigin="0.217,0.233" />
@@ -95,7 +97,7 @@
                 <Label x:Name="label4" Content="Lignes (max 5)" HorizontalAlignment="Left" Margin="33,41,0,0" VerticalAlignment="Top"/>
                 <Label x:Name="label1_Copy2" Content="Colonnes (max 5)" HorizontalAlignment="Left" Margin="119,41,0,0" VerticalAlignment="Top"/>
                 <Button x:Name="EffacerC" Content="Effacer" HorizontalAlignment="Left" Margin="119,13,0,0" VerticalAlignment="Top" Width="75" Click="EffacerC_Click"/>
-                <Label x:Name="label5" Content="1        2         3       4       5" HorizontalAlignment="Left" Margin="33,100,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.252,0.079"/>
+                <Label x:Name="Nombres3" Content="1        2         3       4       5" HorizontalAlignment="Left" Margin="33,100,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.252,0.079"/>
                 <TextBox x:Name="C3_1" HorizontalAlignment="Left" Height="23" Margin="33,180,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="25" RenderTransformOrigin="0.217,0.233" />
                 <TextBox x:Name="C4_1" HorizontalAlignment="Left" Height="23" Margin="33,208,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="25" RenderTransformOrigin="0.217,0.233" />
                 <TextBox x:Name="C5_1" HorizontalAlignment="Left" Height="23" Margin="33,236,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="25" RenderTransformOrigin="0.217,0.233" />
@@ -123,14 +125,21 @@
             </Grid>
             <Button x:Name="IniMatriceB" Content="OK" HorizontalAlignment="Left" Margin="194,72,0,0" VerticalAlignment="Top" Width="27" RenderTransformOrigin="-0.111,-1.1" Click="iniMatriceB_Click"/>
             <Label x:Name="labelResultats" Content="Résultats :" HorizontalAlignment="Left" Margin="124,300,0,0" VerticalAlignment="Top"/>
+            <Rectangle HorizontalAlignment="Left" Height="274" Margin="122,321,0,0" Stroke="Black" VerticalAlignment="Top" Width="352"/>
 
 
         </Grid>
         <Button x:Name="IniMatriceA" Content="OK" HorizontalAlignment="Left" Margin="193,72,0,0" VerticalAlignment="Top" Width="28" Click="iniMatriceA_Click"/>
         <Button x:Name="BtnAddition" Content="Addition de A et B" HorizontalAlignment="Left" Margin="33,327,0,0" VerticalAlignment="Top" Width="161" Click="BtnAddition_Click"/>
-        <Button x:Name="BtnProduitScalaire" Content="Produit de A par scalaire :" HorizontalAlignment="Left" Margin="33,365,0,0" VerticalAlignment="Top" Width="161" Click="BtnProduitScalaire_Click"/>
-        <TextBox x:Name="Scalaire" HorizontalAlignment="Left" Height="23" Margin="199,362,0,0" TextWrapping="Wrap" Text="Scalaire" GotFocus="Scalaire_GotFocus" VerticalAlignment="Top" Width="48"/>
-        <Button x:Name="BtnProduitMatriciel" Content="Produit Matriciel de A et B" HorizontalAlignment="Left" Margin="33,400,0,0" VerticalAlignment="Top" Width="161" Click="BtnProduitMatriciel_Click"/>
+        <Button x:Name="BtnProduitScalaire" Content="Produit de A par scalaire :" HorizontalAlignment="Left" Margin="33,352,0,0" VerticalAlignment="Top" Width="161" Click="BtnProduitScalaire_Click"/>
+        <TextBox x:Name="Scalaire" HorizontalAlignment="Left" Height="23" Margin="199,352,0,0" TextWrapping="Wrap" Text="Scalaire" GotFocus="Scalaire_GotFocus" VerticalAlignment="Top" Width="48"/>
+        <Button x:Name="BtnProduitMatriciel" Content="Produit Matriciel de A et B" HorizontalAlignment="Left" Margin="33,377,0,0" VerticalAlignment="Top" Width="161" Click="BtnProduitMatriciel_Click"/>
+        <Button x:Name="Triangularite" Content="Matrice A triangulaire ?" HorizontalAlignment="Left" Margin="33,402,0,0" VerticalAlignment="Top" Width="161" Click="BtnTriangularite_Click" RenderTransformOrigin="0.497,-1.15"/>
+        <RadioButton x:Name="radioButton1" Content="Inférieure" HorizontalAlignment="Left" Margin="34,427,0,0" VerticalAlignment="Top" GroupName="Triangulaire"/>
+        <RadioButton x:Name="radioButton2" Content="Supérieure" HorizontalAlignment="Left" Margin="34,442,0,0" VerticalAlignment="Top" GroupName="Triangulaire"/>
+        <RadioButton x:Name="radioButton3" Content="Peu importe" HorizontalAlignment="Left" Margin="34,457,0,0" VerticalAlignment="Top" GroupName="Triangulaire" IsChecked="True"/>
+        <CheckBox x:Name="Stricte" Content="Stricte" HorizontalAlignment="Left" Margin="124,427,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="Trace" Content="Trace de la matrice A" HorizontalAlignment="Left" Margin="34,477,0,0" VerticalAlignment="Top" Width="160" Click="Trace_Click"/>
 
 
     </Grid>
