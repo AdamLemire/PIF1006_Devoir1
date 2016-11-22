@@ -243,7 +243,7 @@ namespace PIF1006Devoir1_App
             Nombres3.Visibility = Visibility.Hidden;
         }
 
-        private void EffacerA_Click(object sender, RoutedEventArgs e)
+        private void EffacerAAction()
         {
             LignesA.Text = "";
             ColonnesA.Text = "";
@@ -257,7 +257,12 @@ namespace PIF1006Devoir1_App
             Nombres1.Visibility = Visibility.Hidden;
         }
 
-        private void EffacerB_Click(object sender, RoutedEventArgs e)
+        private void EffacerA_Click(object sender, RoutedEventArgs e)
+        {
+            EffacerAAction();
+        }
+
+        private void EffacerBAction()
         {
             LignesB.Text = "";
             ColonnesB.Text = "";
@@ -270,8 +275,12 @@ namespace PIF1006Devoir1_App
             }
             Nombres2.Visibility = Visibility.Hidden;
         }
+        private void EffacerB_Click(object sender, RoutedEventArgs e)
+        {
+            EffacerBAction();
+        }
 
-        private void EffacerC_Click(object sender, RoutedEventArgs e)
+        private void EffacerCAction()
         {
             LignesC.Text = "";
             ColonnesC.Text = "";
@@ -283,6 +292,11 @@ namespace PIF1006Devoir1_App
                 textbox.Text = "";
             }
             Nombres3.Visibility = Visibility.Hidden;
+        }
+
+        private void EffacerC_Click(object sender, RoutedEventArgs e)
+        {
+            EffacerCAction();
         }
 
         /// <summary>
@@ -395,6 +409,84 @@ namespace PIF1006Devoir1_App
             resultatsTxt.Text = "La trace de la matrice A est : " + trace;
         }
 
+        private void Determinant_Click(object sender, RoutedEventArgs e)
+        {
+            Matrice matriceA = CreerMatriceA(Convert.ToInt32(LignesA.Text), Convert.ToInt32(ColonnesA.Text));
+            double det = matriceA.Determinant;
+            resultatsTxt.Text = "Le déterminant de la matrice A est : " + det;
+        }
+
+        private void Transposee_Click(object sender, RoutedEventArgs e)
+        {
+            Matrice matriceA = CreerMatriceA(Convert.ToInt32(LignesA.Text), Convert.ToInt32(ColonnesA.Text));
+            resultatsTxt.Text = "La transposée de la matrice A est : \r\n";
+            resultatsTxt.Text += matriceA.Transposee.AfficheMatrice();
+        }
+
+        private void Comatrice_Click(object sender, RoutedEventArgs e)
+        {
+            Matrice matriceA = CreerMatriceA(Convert.ToInt32(LignesA.Text), Convert.ToInt32(ColonnesA.Text));
+            resultatsTxt.Text = "La comatrice de la matrice A est : \r\n";
+            resultatsTxt.Text += matriceA.Comatrice.AfficheMatrice();
+        }
+
+        private void Inverse_Click(object sender, RoutedEventArgs e)
+        {
+            Matrice matriceA = CreerMatriceA(Convert.ToInt32(LignesA.Text), Convert.ToInt32(ColonnesA.Text));
+            resultatsTxt.Text = "La matrice inverse de la matrice A est : \r\n";
+            resultatsTxt.Text += matriceA.MatriceInverse.AfficheMatrice();
+        }
+
+        private void Reguliere_Click(object sender, RoutedEventArgs e)
+        {
+            Matrice matriceA = CreerMatriceA(Convert.ToInt32(LignesA.Text), Convert.ToInt32(ColonnesA.Text));
+            double det = matriceA.Determinant;
+            string reg = "La matrice A n'est pas régulière";
+            if (matriceA.EstReguliere) reg = "La matrice A est régulière";
+            resultatsTxt.Text = "Le déterminant de la matrice A est : " + det +"\r\n";
+            resultatsTxt.Text = reg;
+        }
+
+        private void Cramer_Click(object sender, RoutedEventArgs e)
+        {
+            Matrice matriceA = CreerMatriceA(Convert.ToInt32(LignesA.Text), Convert.ToInt32(ColonnesA.Text));
+            Matrice matriceB = CreerMatriceB(Convert.ToInt32(LignesB.Text), Convert.ToInt32(ColonnesB.Text));
+            Systeme systemeA = new Systeme(matriceA, matriceB);
+            Matrice systemeX = systemeA.TrouverXParCramer();
+            AfficheSysteme(systemeX);
+        }
+
+        private void AfficheSysteme(Matrice systemeX)
+        {
+            resultatsTxt.Text = "";
+            int l = systemeX.GetLength(0);
+            for (int i = 0; i < l; i++)
+            {
+                double valeur = systemeX[i, 0];
+                resultatsTxt.Text += "x"+(i+1)+" = " + valeur + "\r\n";
+
+            }
+        }
+
+        private void InversionMatricielle_Click(object sender, RoutedEventArgs e)
+        {
+            Matrice matriceA = CreerMatriceA(Convert.ToInt32(LignesA.Text), Convert.ToInt32(ColonnesA.Text));
+            Matrice matriceB = CreerMatriceB(Convert.ToInt32(LignesB.Text), Convert.ToInt32(ColonnesB.Text));
+            Systeme systemeA = new Systeme(matriceA, matriceB);
+            Matrice systemeX = systemeA.TrouverXParInversionMatricielle();
+            AfficheSysteme(systemeX);
+        }
+
+        private void Jacobi_Click(object sender, RoutedEventArgs e)
+        {
+            Matrice matriceA = CreerMatriceA(Convert.ToInt32(LignesA.Text), Convert.ToInt32(ColonnesA.Text));
+            Matrice matriceB = CreerMatriceB(Convert.ToInt32(LignesB.Text), Convert.ToInt32(ColonnesB.Text));
+            Systeme systemeA = new Systeme(matriceA, matriceB);
+            Matrice systemeX = systemeA.TrouverXParJacobi(double.Parse(Epsilon.Text, System.Globalization.CultureInfo.InvariantCulture)); 
+            AfficheSysteme(systemeX);
+
+        }
+
         private void Scalaire_GotFocus(object sender, RoutedEventArgs e)
         {
             TextBox tb = (TextBox)sender;
@@ -403,9 +495,11 @@ namespace PIF1006Devoir1_App
         }
 
 
-        private void button1_Click(object sender, RoutedEventArgs e)
+        private void EffacerTout_Click(object sender, RoutedEventArgs e)
         {
-            CreerMatriceB(Convert.ToInt32(LignesB.Text), Convert.ToInt32(ColonnesB.Text));
+            EffacerAAction();
+            EffacerBAction();
+            EffacerCAction();
         }
     }
 }
