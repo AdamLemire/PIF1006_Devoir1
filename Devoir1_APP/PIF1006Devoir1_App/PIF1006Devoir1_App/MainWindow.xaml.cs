@@ -1,4 +1,7 @@
-﻿using System;
+﻿//Devoir 1 PIF1006 - 27 novembre 2016
+//Adam Lemire et Rémi Petiteau
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -362,98 +365,207 @@ namespace PIF1006Devoir1_App
 
         private void BtnAddition_Click(object sender, RoutedEventArgs e)
         {
-            Matrice matriceA = CreerMatriceA(Convert.ToInt32(LignesA.Text), Convert.ToInt32(ColonnesA.Text));
-            Matrice matriceB = CreerMatriceB(Convert.ToInt32(LignesB.Text), Convert.ToInt32(ColonnesB.Text));
-            resultatsTxt.Text = (matriceA.Additionner(matriceB)).AfficheMatrice();
+            try
+            {
+                Matrice matriceA = CreerMatriceA(Convert.ToInt32(LignesA.Text), Convert.ToInt32(ColonnesA.Text));
+                Matrice matriceB = CreerMatriceB(Convert.ToInt32(LignesB.Text), Convert.ToInt32(ColonnesB.Text));
+                resultatsTxt.Text = (matriceA.Additionner(matriceB)).AfficheMatrice();
+            }
+            catch (Exception ex)
+            {
+                resultatsTxt.Text = "";
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void BtnProduitScalaire_Click(object sender, RoutedEventArgs e)
         {
-            Matrice matriceA = CreerMatriceA(Convert.ToInt32(LignesA.Text), Convert.ToInt32(ColonnesA.Text));
-            resultatsTxt.Text = matriceA.FaireProduitScalaire(Convert.ToInt32(Scalaire.Text)).AfficheMatrice();
+            try
+            {
+                if (Scalaire.Text != "")
+                {
+                    Matrice matriceA = CreerMatriceA(Convert.ToInt32(LignesA.Text), Convert.ToInt32(ColonnesA.Text));
+                    resultatsTxt.Text = matriceA.FaireProduitScalaire(Convert.ToInt32(Scalaire.Text)).AfficheMatrice();
+                }
+                else
+                {
+                    resultatsTxt.Text = "";
+                    MessageBox.Show("Veuillez entrer un scalaire");
+                }
+            }
+            catch (Exception ex)
+            {
+                if (ex is FormatException)
+                {
+                    resultatsTxt.Text = "";
+                    MessageBox.Show("Erreur de conversion, vérifier les dimensions");
+                }
+                else
+                {
+                    resultatsTxt.Text = "";
+                    MessageBox.Show(ex.Message);
+                }
+
+            }
+
         }
 
         private void BtnProduitMatriciel_Click(object sender, RoutedEventArgs e)
         {
-            Matrice matriceA = CreerMatriceA(Convert.ToInt32(LignesA.Text), Convert.ToInt32(ColonnesA.Text));
-            Matrice matriceB = CreerMatriceB(Convert.ToInt32(LignesB.Text), Convert.ToInt32(ColonnesB.Text));
-            Matrice matriceC;
-            int a = 0;
-            if (LignesC.Text != "" && ColonnesC.Text != "")
+            try
             {
-                matriceC = CreerMatriceC(Convert.ToInt32(LignesC.Text), Convert.ToInt32(ColonnesC.Text));
-                resultatsTxt.Text = (matriceA.FaireProduitMatriciel(out a, matriceB, matriceC)).AfficheMatrice();
-            }
-            else resultatsTxt.Text = (matriceA.FaireProduitMatriciel(out a, matriceB)).AfficheMatrice();
+                Matrice matriceA = CreerMatriceA(Convert.ToInt32(LignesA.Text), Convert.ToInt32(ColonnesA.Text));
+                Matrice matriceB = CreerMatriceB(Convert.ToInt32(LignesB.Text), Convert.ToInt32(ColonnesB.Text));
+                Matrice matriceC;
+                int a = 0;
+                if (LignesC.Text != "" && ColonnesC.Text != "")
+                {
+                    matriceC = CreerMatriceC(Convert.ToInt32(LignesC.Text), Convert.ToInt32(ColonnesC.Text));
+                    resultatsTxt.Text = (matriceA.FaireProduitMatriciel(out a, matriceB, matriceC)).AfficheMatrice();
+                }
+                else resultatsTxt.Text = (matriceA.FaireProduitMatriciel(out a, matriceB)).AfficheMatrice();
 
-            resultatsTxt.Text += "Nombre de produits effectues : " + a;
+                resultatsTxt.Text += "Nombre de produits effectues : " + a;
+            }
+            catch (Exception ex)
+            {
+                resultatsTxt.Text = "";
+                MessageBox.Show(ex.Message);
+            }
         }
 
-        private void BtnTriangularite_Click(object sender, RoutedEventArgs e) {
-            Matrice matriceA = CreerMatriceA(Convert.ToInt32(LignesA.Text), Convert.ToInt32(ColonnesA.Text));
-            bool stricte = Stricte.IsChecked.Value;
-            int choix;
-            string reponse = "Non";
-            if (radioButton1.IsChecked.Value) choix = 0;
-            else if (radioButton2.IsChecked.Value) choix = 1;
-            else choix = 2;
-            bool m = matriceA.EstTriangulaire(choix, stricte);
-            if (m == true) reponse = "Oui";
-            resultatsTxt.Text = "Triangulaire tel que spécifié? : "+reponse;
+        private void BtnTriangularite_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                Matrice matriceA = CreerMatriceA(Convert.ToInt32(LignesA.Text), Convert.ToInt32(ColonnesA.Text));
+                bool stricte = Stricte.IsChecked.Value;
+                int choix;
+                string reponse = "Non";
+                if (radioButton1.IsChecked.Value) choix = 0;
+                else if (radioButton2.IsChecked.Value) choix = 1;
+                else choix = 2;
+                bool m = matriceA.EstTriangulaire(choix, stricte);
+                if (m == true) reponse = "Oui";
+                resultatsTxt.Text = "Triangulaire tel que spécifié? : " + reponse;
+            }
+            catch (Exception ex)
+            {
+                resultatsTxt.Text = "";
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void Trace_Click(object sender, RoutedEventArgs e)
         {
-            Matrice matriceA = CreerMatriceA(Convert.ToInt32(LignesA.Text), Convert.ToInt32(ColonnesA.Text));
-            double trace = matriceA.Trace;
-            resultatsTxt.Text = "La trace de la matrice A est : " + trace;
+            try
+            {
+                Matrice matriceA = CreerMatriceA(Convert.ToInt32(LignesA.Text), Convert.ToInt32(ColonnesA.Text));
+                double trace = matriceA.Trace;
+                resultatsTxt.Text = "La trace de la matrice A est : " + trace;
+            }
+            catch (Exception ex)
+            {
+                resultatsTxt.Text = "";
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void Determinant_Click(object sender, RoutedEventArgs e)
         {
-            Matrice matriceA = CreerMatriceA(Convert.ToInt32(LignesA.Text), Convert.ToInt32(ColonnesA.Text));
-            double det = matriceA.Determinant;
-            resultatsTxt.Text = "Le déterminant de la matrice A est : " + det;
+            try
+            {
+                Matrice matriceA = CreerMatriceA(Convert.ToInt32(LignesA.Text), Convert.ToInt32(ColonnesA.Text));
+                double det = matriceA.Determinant;
+                resultatsTxt.Text = "Le déterminant de la matrice A est : " + det;
+            }
+            catch (Exception ex)
+            {
+                resultatsTxt.Text = "";
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void Transposee_Click(object sender, RoutedEventArgs e)
         {
-            Matrice matriceA = CreerMatriceA(Convert.ToInt32(LignesA.Text), Convert.ToInt32(ColonnesA.Text));
-            resultatsTxt.Text = "La transposée de la matrice A est : \r\n";
-            resultatsTxt.Text += matriceA.Transposee.AfficheMatrice();
+            try
+            {
+                Matrice matriceA = CreerMatriceA(Convert.ToInt32(LignesA.Text), Convert.ToInt32(ColonnesA.Text));
+                resultatsTxt.Text = "La transposée de la matrice A est : \r\n";
+                resultatsTxt.Text += matriceA.Transposee.AfficheMatrice();
+            }
+            catch (Exception ex)
+            {
+                resultatsTxt.Text = "";
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void Comatrice_Click(object sender, RoutedEventArgs e)
         {
-            Matrice matriceA = CreerMatriceA(Convert.ToInt32(LignesA.Text), Convert.ToInt32(ColonnesA.Text));
-            resultatsTxt.Text = "La comatrice de la matrice A est : \r\n";
-            resultatsTxt.Text += matriceA.Comatrice.AfficheMatrice();
+            try
+            {
+                Matrice matriceA = CreerMatriceA(Convert.ToInt32(LignesA.Text), Convert.ToInt32(ColonnesA.Text));
+                resultatsTxt.Text = "La comatrice de la matrice A est : \r\n";
+                resultatsTxt.Text += matriceA.Comatrice.AfficheMatrice();
+            }
+            catch (Exception ex)
+            {
+                resultatsTxt.Text = "";
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void Inverse_Click(object sender, RoutedEventArgs e)
         {
-            Matrice matriceA = CreerMatriceA(Convert.ToInt32(LignesA.Text), Convert.ToInt32(ColonnesA.Text));
-            resultatsTxt.Text = "La matrice inverse de la matrice A est : \r\n";
-            resultatsTxt.Text += matriceA.MatriceInverse.AfficheMatrice();
+            try
+            {
+                Matrice matriceA = CreerMatriceA(Convert.ToInt32(LignesA.Text), Convert.ToInt32(ColonnesA.Text));
+                resultatsTxt.Text = "La matrice inverse de la matrice A est : \r\n";
+                resultatsTxt.Text += matriceA.MatriceInverse.AfficheMatrice();
+            }
+            catch (Exception ex)
+            {
+                resultatsTxt.Text = "";
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void Reguliere_Click(object sender, RoutedEventArgs e)
         {
-            Matrice matriceA = CreerMatriceA(Convert.ToInt32(LignesA.Text), Convert.ToInt32(ColonnesA.Text));
-            double det = matriceA.Determinant;
-            string reg = "La matrice A n'est pas régulière";
-            if (matriceA.EstReguliere) reg = "La matrice A est régulière";
-            resultatsTxt.Text = "Le déterminant de la matrice A est : " + det +"\r\n";
-            resultatsTxt.Text = reg;
+            try
+            {
+                Matrice matriceA = CreerMatriceA(Convert.ToInt32(LignesA.Text), Convert.ToInt32(ColonnesA.Text));
+                double det = matriceA.Determinant;
+                string reg = "La matrice A n'est pas régulière";
+                if (matriceA.EstReguliere) reg = "La matrice A est régulière";
+                resultatsTxt.Text = "Le déterminant de la matrice A est : " + det + "\r\n";
+                resultatsTxt.Text = reg;
+            }
+            catch (Exception ex)
+            {
+                resultatsTxt.Text = "";
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void Cramer_Click(object sender, RoutedEventArgs e)
         {
-            Matrice matriceA = CreerMatriceA(Convert.ToInt32(LignesA.Text), Convert.ToInt32(ColonnesA.Text));
-            Matrice matriceB = CreerMatriceB(Convert.ToInt32(LignesB.Text), Convert.ToInt32(ColonnesB.Text));
-            Systeme systemeA = new Systeme(matriceA, matriceB);
-            Matrice systemeX = systemeA.TrouverXParCramer();
-            AfficheSysteme(systemeX);
+            try
+            {
+                Matrice matriceA = CreerMatriceA(Convert.ToInt32(LignesA.Text), Convert.ToInt32(ColonnesA.Text));
+                Matrice matriceB = CreerMatriceB(Convert.ToInt32(LignesB.Text), Convert.ToInt32(ColonnesB.Text));
+                Systeme systemeA = new Systeme(matriceA, matriceB);
+                Matrice systemeX = systemeA.TrouverXParCramer();
+                AfficheSysteme(systemeX);
+            }
+            catch (Exception ex)
+            {
+                resultatsTxt.Text = "";
+                MessageBox.Show(ex.Message);
+                //MessageBox.Show("Impossible d'utiliser cette méthode car la matrice A a un déterminant de 0");
+            }
+
         }
 
         private void AfficheSysteme(Matrice systemeX)
@@ -463,28 +575,47 @@ namespace PIF1006Devoir1_App
             for (int i = 0; i < l; i++)
             {
                 double valeur = systemeX[i, 0];
-                resultatsTxt.Text += "x"+(i+1)+" = " + valeur + "\r\n";
+                resultatsTxt.Text += "x" + (i + 1) + " = " + valeur + "\r\n";
 
             }
         }
 
         private void InversionMatricielle_Click(object sender, RoutedEventArgs e)
         {
-            Matrice matriceA = CreerMatriceA(Convert.ToInt32(LignesA.Text), Convert.ToInt32(ColonnesA.Text));
-            Matrice matriceB = CreerMatriceB(Convert.ToInt32(LignesB.Text), Convert.ToInt32(ColonnesB.Text));
-            Systeme systemeA = new Systeme(matriceA, matriceB);
-            Matrice systemeX = systemeA.TrouverXParInversionMatricielle();
-            AfficheSysteme(systemeX);
+            try
+            {
+                Matrice matriceA = CreerMatriceA(Convert.ToInt32(LignesA.Text), Convert.ToInt32(ColonnesA.Text));
+
+                Matrice matriceB = CreerMatriceB(Convert.ToInt32(LignesB.Text), Convert.ToInt32(ColonnesB.Text));
+                Systeme systemeA = new Systeme(matriceA, matriceB);
+                Matrice systemeX = systemeA.TrouverXParInversionMatricielle();
+                AfficheSysteme(systemeX);
+            }
+            catch (Exception)
+            {
+                resultatsTxt.Text = "";
+                MessageBox.Show("Impossible d'utiliser cette méthode car la matrice A a un déterminant de 0");
+            }
         }
 
         private void Jacobi_Click(object sender, RoutedEventArgs e)
         {
-            Matrice matriceA = CreerMatriceA(Convert.ToInt32(LignesA.Text), Convert.ToInt32(ColonnesA.Text));
-            Matrice matriceB = CreerMatriceB(Convert.ToInt32(LignesB.Text), Convert.ToInt32(ColonnesB.Text));
-            Systeme systemeA = new Systeme(matriceA, matriceB);
-            Matrice systemeX = systemeA.TrouverXParJacobi(double.Parse(Epsilon.Text, System.Globalization.CultureInfo.InvariantCulture)); 
-            AfficheSysteme(systemeX);
+            try
+            {
 
+                Matrice matriceA = CreerMatriceA(Convert.ToInt32(LignesA.Text), Convert.ToInt32(ColonnesA.Text));
+                Matrice matriceB = CreerMatriceB(Convert.ToInt32(LignesB.Text), Convert.ToInt32(ColonnesB.Text));
+                Systeme systemeA = new Systeme(matriceA, matriceB);
+                systemeA.DominanteDiag();
+                Matrice systemeX = systemeA.TrouverXParJacobi(double.Parse(Epsilon.Text, System.Globalization.CultureInfo.InvariantCulture));
+                AfficheSysteme(systemeX);
+            }
+            catch (Exception)
+            {
+                resultatsTxt.Text = "";
+                MessageBox.Show("La matrice A n'est pas diagonalement dominante");
+
+            }
         }
 
         private void Scalaire_GotFocus(object sender, RoutedEventArgs e)
@@ -500,6 +631,11 @@ namespace PIF1006Devoir1_App
             EffacerAAction();
             EffacerBAction();
             EffacerCAction();
+        }
+
+        private void VerifierSiVide()
+        {
+            //if ()
         }
     }
 }

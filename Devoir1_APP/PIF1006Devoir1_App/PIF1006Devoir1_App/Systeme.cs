@@ -1,4 +1,7 @@
-﻿using System;
+﻿//Devoir 1 PIF1006 - 27 novembre 2016
+//Adam Lemire et Rémi Petiteau
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -21,10 +24,9 @@ namespace PIF1006Devoir1
             }
             else
             {
-                Console.WriteLine("Format de matrice incorrect");
+                Exception e = new Exception("Format de matrice incorrect pour créer un système d'équation");
+                throw e;
             }
-
-
         }
 
         //propriété de _matriceCarree
@@ -61,11 +63,10 @@ namespace PIF1006Devoir1
                 }
                 return X;
             }
-
             else
             {
-                Console.WriteLine("Déterminant de la matrice = 0, donc impossible d'utiliser la méthode de Cramer");
-                return new Matrice(new double[0, 0]);
+                Exception e = new Exception("La matrice a un déterminant de 0");
+                throw e;
             }
         }
 
@@ -81,101 +82,95 @@ namespace PIF1006Devoir1
             }
             else
             {
-                Console.WriteLine("Déterminant de la matrice = 0, donc impossible d'utiliser la méthode de d'inversion matricielle");
-                return new Matrice(new double[0, 0]);
+                Exception e = new Exception("La matrice a un déterminant de 0");
+                throw e;
             }
         }
 
         //Méthode de Jacobi
         public Matrice TrouverXParJacobi(double epsilon)
         {
-            int n = _matriceCarree.GetLength(0);
-            Matrice d = new Matrice((new double[n, 1]));
-            Matrice xDroite = new Matrice((new double[n, n + 1])); //
-            Matrice xGauche = new Matrice((new double[n, 1]));
-            Matrice xGaucheAvant = new Matrice((new double[n, 1]));
-            bool continuer = true;
-
-            //création de la matrice colonne des valeurs de la diagonale et instanciation de matrice x gauche
-            for (int i = 0; i < n; i++)
             {
-                d[i, 0] = _matriceCarree[i, i];
-                xGauche[i, 0] = 0;
-            }
+                int n = _matriceCarree.GetLength(0);
+                Matrice d = new Matrice((new double[n, 1]));
+                Matrice xDroite = new Matrice((new double[n, n + 1])); //
+                Matrice xGauche = new Matrice((new double[n, 1]));
+                Matrice xGaucheAvant = new Matrice((new double[n, 1]));
+                bool continuer = true;
 
-            //création de la matrice des formules X
-            for (int i = 0; i < n; i++)
-            {
-                for (int j = 0; j < n; j++)
-                {
-                    if (i != j)
-                    {
-                        xDroite[i, j] =  - _matriceCarree[i, j]/d[i, 0];
-                    }
-                    else
-                    {
-                        xDroite[i, j] = 0;
-                    }
-                    
-                }
-                xDroite[i, n] = _matrice1N[i, 0]/d[i, 0];
-            }
-
-
-            //itération pour trouver X 
-            while (continuer)
-            {
-                bool continuerTemp = false;
+                //création de la matrice colonne des valeurs de la diagonale et instanciation de matrice x gauche
                 for (int i = 0; i < n; i++)
                 {
-                    xGaucheAvant[i, 0] = xGauche[i, 0];
+                    d[i, 0] = _matriceCarree[i, i];
                     xGauche[i, 0] = 0;
-                    
-
-                    for (int j = 0; j < n; j++)
-                    {
-                        xGauche[i, 0] += xDroite[i, j] * xGaucheAvant[j, 0];
-                    }
-                    xGauche[i, 0] += xDroite[i, n];
-                    Console.WriteLine(xGauche[i, 0]);
-                    if (Math.Abs(xGauche[i, 0] - xGaucheAvant[i, 0]) >= epsilon || continuerTemp)
-                    {
-                        continuerTemp = true;
-                    }
-                    //else continuerTemp = false;
                 }
-                continuer = continuerTemp;
 
-            }
-            return xGauche;
-        }
-
-        //propriété strictement dominante diagonalement
-        private bool DominanteDiag
-        {
-            get
-            {
-                double somme = 0; //somme des a(i,j) pour j!= i
-                for (int i = 0; i < _matriceCarree.GetLength(0); i++)
+                //création de la matrice des formules X
+                for (int i = 0; i < n; i++)
                 {
-                    for (int j = 0; j < _matriceCarree.GetLength(0); j++)
+                    for (int j = 0; j < n; j++)
                     {
                         if (i != j)
                         {
-                            somme += Math.Abs(_matriceCarree[i, j]);
+                            xDroite[i, j] = -_matriceCarree[i, j] / d[i, 0];
+                        }
+                        else
+                        {
+                            xDroite[i, j] = 0;
                         }
                     }
+                    xDroite[i, n] = _matrice1N[i, 0] / d[i, 0];
                 }
-                for (int i = 0; i < _matriceCarree.GetLength(0); i++)
+
+
+                //itération pour trouver X 
+                while (continuer)
                 {
-                    if (Math.Abs(_matriceCarree[i, i]) > somme) { return true; }
+                    bool continuerTemp = false;
+                    for (int i = 0; i < n; i++)
+                    {
+                        xGaucheAvant[i, 0] = xGauche[i, 0];
+                        xGauche[i, 0] = 0;
+
+                        for (int j = 0; j < n; j++)
+                        {
+                            xGauche[i, 0] += xDroite[i, j] * xGaucheAvant[j, 0];
+                        }
+                        xGauche[i, 0] += xDroite[i, n];
+                        Console.WriteLine(xGauche[i, 0]);
+                        if (Math.Abs(xGauche[i, 0] - xGaucheAvant[i, 0]) >= epsilon || continuerTemp)
+                        {
+                            continuerTemp = true;
+                        }
+                    }
+                    continuer = continuerTemp;
                 }
-                return false;
+                return xGauche;
             }
         }
 
-        //propriété irréductiblement dominante diagonalement
-
-
+        //propriété strictement dominante diagonalement
+        public void DominanteDiag()
+        {
+            double somme = 0; //somme des a(i,j) pour j!= i
+            for (int i = 0; i < _matriceCarree.GetLength(0); i++)
+            {
+                for (int j = 0; j < _matriceCarree.GetLength(0); j++)
+                {
+                    if (i != j)
+                    {
+                        somme += Math.Abs(_matriceCarree[i, j]);
+                    }
+                }
+            }
+            for (int i = 0; i < _matriceCarree.GetLength(0); i++)
+            {
+                if (Math.Abs(_matriceCarree[i, i]) <= somme)
+                {
+                    Exception e = new Exception("La matrice n'est pas diagonalement dominante");
+                    throw e;
+                }
+            }
+        }
     }
 }
