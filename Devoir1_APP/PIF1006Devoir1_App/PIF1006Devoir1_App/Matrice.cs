@@ -106,16 +106,17 @@ namespace PIF1006Devoir1
             //if (VerifierColonneAcommeLigneB(matrice))
             //{
 
-            var n = _matrice.GetLength(0);
-            var p = matrice.GetLength(1);
+            int n = _matrice.GetLength(0);
+            int p = matrice.GetLength(1);
+            int q = matrice.GetLength(0);
 
-            var produitMatriciel = new Matrice(new double[n, p]);
+            Matrice produitMatriciel = new Matrice(new double[n, p]);
 
-            for (var i = 0; i < n; i++)
-                for (var j = 0; j < p; j++)
+            for (int i = 0; i < n; i++)
+                for (int j = 0; j < p; j++)
                 {
                     produitMatriciel[i, j] = 0;
-                    for (var z = 0; z < n; z++)
+                    for (int z = 0; z < q; z++)
                     {
                         produitMatriciel[i, j] += _matrice[i, z] * matrice[z, j];
 
@@ -137,6 +138,20 @@ namespace PIF1006Devoir1
             operations = 0;
             Matrice temp = this;
             for (int i = 0; i < matrices.Length; i++)
+            {
+                operations += temp.GetLength(0) * temp.GetLength(1) * matrices[i].GetLength(1);
+                temp = temp.FaireProduitMatriciel(matrices[i]);
+
+            }
+            return temp;
+        }
+
+        /////////en train d'arranger ca
+        public Matrice FaireProduitMatricielParFin(out int operations, params Matrice[] matrices)
+        {
+            operations = 0;
+            Matrice temp = this;
+            for (int i = matrices.Length -1; i ==0; i--)
             {
                 operations += temp.GetLength(0) * temp.GetLength(1) * matrices[i].GetLength(1);
                 temp = temp.FaireProduitMatriciel(matrices[i]);
@@ -198,7 +213,6 @@ namespace PIF1006Devoir1
         {
             get
             {
-
                 if (EstCarree)
                 {
                     double trace = 0;
@@ -209,16 +223,7 @@ namespace PIF1006Devoir1
                     return trace;
                 }
                 return 0;
-                //else
-                //{
-                //     Console.WriteLine("Format de matrice incorrect");
-                //    return 0;
-                // }
-
-
-
             }
-
         }
 
         //vérifie si complement doit être positif
@@ -283,10 +288,9 @@ namespace PIF1006Devoir1
         }
 
         //méthode de calcul du determinant
-        private double CalculDeterminant(Matrice matrice, int ordre)
+        private static double CalculDeterminant(Matrice matrice, int ordre)
         {
             {
-                int p, h, k, i, j;
                 double determinant = 0;
                 Matrice temp = new Matrice(new double[ordre, ordre]);
 
@@ -303,28 +307,15 @@ namespace PIF1006Devoir1
                 //pour matrice d'ordre > 2
                 else
                 {
-                    for (p = 0; p < ordre; p++)
+                    for (int i = 0; i < ordre; i++)
                     {
-                        h = 0;
-                        k = 0;
-                        for (i = 1; i < ordre; i++)
+                        Matrice mineure = new Matrice(new double[ordre - 1, ordre - 1]);
+                        mineure = matrice.Mineure(0, i);
+                        if (matrice.SigneComplement(1, i + 1) == true)
                         {
-                            for (j = 0; j < ordre; j++)
-                            {
-                                if (j == p)
-                                {
-                                    continue;
-                                }
-                                temp[h, k] = matrice[i, j];
-                                k++;
-                                if (k == ordre - 1)
-                                {
-                                    h++;
-                                    k = 0;
-                                }
-                            }
+                            determinant += matrice[0, i] * CalculDeterminant(mineure, ordre - 1);
                         }
-                        determinant = determinant + matrice[0, p] * Math.Pow(-1, p) * CalculDeterminant(temp, ordre - 1);
+                        else determinant -= matrice[0, i] * CalculDeterminant(mineure, ordre - 1);
                     }
                     return determinant;
                 }
@@ -340,8 +331,6 @@ namespace PIF1006Devoir1
                 {
                     return CalculDeterminant(this, this.GetLength(0));
                 }
-
-                //else Console.WriteLine("La matrice n'est pas carrée");
                 return 0;
             }
         }
@@ -392,7 +381,6 @@ namespace PIF1006Devoir1
                     //Console.WriteLine("Format de matrice incorrect");
                     return new Matrice(new double[0, 0]);
                 }
-
             }
         }
 
@@ -411,15 +399,12 @@ namespace PIF1006Devoir1
                     }
                     else
                     {
-                        //Console.WriteLine("Le déterminant de la matrice est 0, donc impossible d'inverser la matrice");
                         Exception e = new Exception("Le déterminant de la matrice est 0, donc impossible d'inverser la matrice");
                         throw e;
-                        //return null;
                     }
                 }
                 else
                 {
-                    //Console.WriteLine("La matrice n'est pas carrée");
                     return null;
                 }
             }
@@ -431,7 +416,6 @@ namespace PIF1006Devoir1
             {
                 if (_matrice.GetLength(0) == _matrice.GetLength(1))
                     return true;
-                //return false;
                 else
                 {
                     Exception e = new Exception("La matrice n'est pas carrée");
@@ -445,7 +429,6 @@ namespace PIF1006Devoir1
             get
             {
                 if (this.Determinant != 0) return true;
-                //return false;
                 else
                 {
                     Exception e = new Exception("La matrice n'est pas régulière");
@@ -457,7 +440,6 @@ namespace PIF1006Devoir1
         //méthode de copie de la matrice
         public Matrice CopierMatrice()
         {
-
             Matrice copie = new Matrice(new double[_matrice.GetLength(0), _matrice.GetLength(1)]);
             for (int i = 0; i < _matrice.GetLength(0); i++)
             {

@@ -146,14 +146,14 @@ namespace PIF1006Devoir1_App
             return matriceC;
         }
 
-        private void textBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
-        }
-
-
         private void iniMatriceA_Click(object sender, RoutedEventArgs e)
         {
+            string lignesT, colonnesT;
+            lignesT = LignesA.Text;
+            colonnesT = ColonnesA.Text;
+            EffacerAAction();
+            LignesA.Text = lignesT;
+            ColonnesA.Text = colonnesT;
             if (LignesA.Text != "" && ColonnesA.Text != "")
             {
                 int lignes, colonnes;
@@ -177,6 +177,12 @@ namespace PIF1006Devoir1_App
 
         private void iniMatriceB_Click(object sender, RoutedEventArgs e)
         {
+            string lignesT, colonnesT;
+            lignesT = LignesB.Text;
+            colonnesT = ColonnesB.Text;
+            EffacerBAction();
+            LignesB.Text = lignesT;
+            ColonnesB.Text = colonnesT;
             if (LignesB.Text != "" && ColonnesB.Text != "")
             {
                 int lignes, colonnes;
@@ -200,6 +206,12 @@ namespace PIF1006Devoir1_App
 
         private void iniMatriceC_Click(object sender, RoutedEventArgs e)
         {
+            string lignesT, colonnesT;
+            lignesT = LignesC.Text;
+            colonnesT = ColonnesC.Text;
+            EffacerCAction();
+            LignesC.Text = lignesT;
+            ColonnesC.Text = colonnesT;
             if (LignesC.Text != "" && ColonnesC.Text != "")
             {
                 int lignes, colonnes;
@@ -310,13 +322,22 @@ namespace PIF1006Devoir1_App
         /// <returns></returns>
         private Matrice CreerMatriceA(int x, int y)
         {
+
             Matrice matriceAPleine = new Matrice(new double[x, y]);
             for (int i = 0; i < x; i++)
             {
                 for (int j = 0; j < y; j++)
                 {
-                    matriceAPleine[i, j] = Convert.ToInt32(matriceA[i, j].GetLineText(0));
-                    resultatsTxt.Text = resultatsTxt.Text + " " + Convert.ToString(matriceAPleine[i, j]);
+                    if (matriceA[i, j].GetLineText(0) != "")
+                    {
+                        matriceAPleine[i, j] = Convert.ToInt32(matriceA[i, j].GetLineText(0));
+                        //resultatsTxt.Text = resultatsTxt.Text + " " + Convert.ToString(matriceAPleine[i, j]);
+                    }
+                    else
+                    {
+                        Exception e = new Exception("Au moins une case de la matrice A n'a pas été remplie");
+                        throw e;
+                    }
                 }
             }
             return matriceAPleine;
@@ -335,8 +356,16 @@ namespace PIF1006Devoir1_App
             {
                 for (int j = 0; j < y; j++)
                 {
-                    matriceBPleine[i, j] = Convert.ToInt32(matriceB[i, j].GetLineText(0));
-                    resultatsTxt.Text = resultatsTxt.Text + " " + Convert.ToString(matriceBPleine[i, j]);
+                    if (matriceB[i, j].GetLineText(0) != "")
+                    {
+                        matriceBPleine[i, j] = Convert.ToInt32(matriceB[i, j].GetLineText(0));
+                        //resultatsTxt.Text = resultatsTxt.Text + " " + Convert.ToString(matriceBPleine[i, j]);
+                    }
+                    else
+                    {
+                        Exception e = new Exception("Au moins une case de la matrice B n'a pas été remplie");
+                        throw e;
+                    }
                 }
             }
             return matriceBPleine;
@@ -356,8 +385,15 @@ namespace PIF1006Devoir1_App
             {
                 for (int j = 0; j < y; j++)
                 {
-                    matriceCPleine[i, j] = Convert.ToInt32(matriceC[i, j].GetLineText(0));
-                    //resultatsTxt.Text = resultatsTxt.Text + " " + Convert.ToString(matriceCPleine[i, j]);
+                    if (matriceC[i, j].GetLineText(0) != "")
+                    {
+                        matriceCPleine[i, j] = Convert.ToInt32(matriceC[i, j].GetLineText(0));
+                    }
+                    else
+                    {
+                        Exception e = new Exception("Au moins une case de la matrice C n'a pas été remplie");
+                        throw e;
+                    }
                 }
             }
             return matriceCPleine;
@@ -433,6 +469,7 @@ namespace PIF1006Devoir1_App
                 MessageBox.Show(ex.Message);
             }
         }
+
 
         private void BtnTriangularite_Click(object sender, RoutedEventArgs e)
         {
@@ -549,6 +586,20 @@ namespace PIF1006Devoir1_App
             }
         }
 
+        private void Carree_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                Matrice matriceA = CreerMatriceA(Convert.ToInt32(LignesA.Text), Convert.ToInt32(ColonnesA.Text));
+                if (matriceA.EstCarree)  resultatsTxt.Text = "La matrice A est carrée";
+            }
+            catch (Exception ex)
+            {
+                resultatsTxt.Text = "";
+                MessageBox.Show(ex.Message);
+            }
+        }
+
         private void Cramer_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -557,26 +608,48 @@ namespace PIF1006Devoir1_App
                 Matrice matriceB = CreerMatriceB(Convert.ToInt32(LignesB.Text), Convert.ToInt32(ColonnesB.Text));
                 Systeme systemeA = new Systeme(matriceA, matriceB);
                 Matrice systemeX = systemeA.TrouverXParCramer();
-                AfficheSysteme(systemeX);
+                AfficheSysteme(systemeX, "Méthode de Cramer : ");
             }
             catch (Exception ex)
             {
                 resultatsTxt.Text = "";
                 MessageBox.Show(ex.Message);
-                //MessageBox.Show("Impossible d'utiliser cette méthode car la matrice A a un déterminant de 0");
             }
 
         }
 
-        private void AfficheSysteme(Matrice systemeX)
+        private void AfficheSysteme(Matrice systemeX, string methode)
         {
-            resultatsTxt.Text = "";
+            Matrice matriceA = CreerMatriceA(Convert.ToInt32(LignesA.Text), Convert.ToInt32(ColonnesA.Text));
+            Matrice matriceB = CreerMatriceB(Convert.ToInt32(LignesB.Text), Convert.ToInt32(ColonnesB.Text));
+            int m = Convert.ToInt32(LignesA.Text);
+            int n = Convert.ToInt32(ColonnesA.Text);
+
+            resultatsTxt.Text = methode +"\r\n" ;
             int l = systemeX.GetLength(0);
+
+            resultatsTxt.Text += "Système recherché : \r\n";
+            for (int i = 0; i < m; i++)
+            {
+                for (int j = 0; j < n; j++)
+                {
+                    double valeur = matriceA[i, j];
+                    double valB = matriceB[i, 0];
+                    string signe = " + ";
+                    if (valeur < 0) signe = " ";
+                    if (j == 0) resultatsTxt.Text += valeur + "(x" + (j + 1) + ")";
+                    else resultatsTxt.Text += signe + valeur + "(x" + (j + 1) + ")";
+                    if (j == n - 1) resultatsTxt.Text += " = " + valB;
+                }
+                resultatsTxt.Text += "\r\n";
+            }
+
+            resultatsTxt.Text += "Valeurs de X trouvées";
+            resultatsTxt.Text += "\r\n";
             for (int i = 0; i < l; i++)
             {
                 double valeur = systemeX[i, 0];
                 resultatsTxt.Text += "x" + (i + 1) + " = " + valeur + "\r\n";
-
             }
         }
 
@@ -585,11 +658,10 @@ namespace PIF1006Devoir1_App
             try
             {
                 Matrice matriceA = CreerMatriceA(Convert.ToInt32(LignesA.Text), Convert.ToInt32(ColonnesA.Text));
-
                 Matrice matriceB = CreerMatriceB(Convert.ToInt32(LignesB.Text), Convert.ToInt32(ColonnesB.Text));
                 Systeme systemeA = new Systeme(matriceA, matriceB);
                 Matrice systemeX = systemeA.TrouverXParInversionMatricielle();
-                AfficheSysteme(systemeX);
+                AfficheSysteme(systemeX, "Méthode d'inversion matricielle : ");
             }
             catch (Exception)
             {
@@ -600,15 +672,16 @@ namespace PIF1006Devoir1_App
 
         private void Jacobi_Click(object sender, RoutedEventArgs e)
         {
+
             try
             {
-
                 Matrice matriceA = CreerMatriceA(Convert.ToInt32(LignesA.Text), Convert.ToInt32(ColonnesA.Text));
                 Matrice matriceB = CreerMatriceB(Convert.ToInt32(LignesB.Text), Convert.ToInt32(ColonnesB.Text));
                 Systeme systemeA = new Systeme(matriceA, matriceB);
                 systemeA.DominanteDiag();
                 Matrice systemeX = systemeA.TrouverXParJacobi(double.Parse(Epsilon.Text, System.Globalization.CultureInfo.InvariantCulture));
-                AfficheSysteme(systemeX);
+                AfficheSysteme(systemeX, "Méthode de Jacobi : ");
+
             }
             catch (Exception)
             {
@@ -633,9 +706,13 @@ namespace PIF1006Devoir1_App
             EffacerCAction();
         }
 
-        private void VerifierSiVide()
+        private void VerifierSiDimVideA()
         {
-            //if ()
+            if (LignesA.Text == "" || ColonnesA.Text == "")
+            {
+                Exception e = new Exception("Veuillez entrer les dimensions de la matrice");
+                throw e;
+            }
         }
     }
 }

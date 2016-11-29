@@ -152,25 +152,27 @@ namespace PIF1006Devoir1
         //propriété strictement dominante diagonalement
         public void DominanteDiag()
         {
-            double somme = 0; //somme des a(i,j) pour j!= i
+            double somme;
             for (int i = 0; i < _matriceCarree.GetLength(0); i++)
             {
-                for (int j = 0; j < _matriceCarree.GetLength(0); j++)
+                somme = 0; //somme des a(i,j) pour j!= i
+                for (int j = 0; j < _matriceCarree.GetLength(1); j++)
                 {
                     if (i != j)
                     {
                         somme += Math.Abs(_matriceCarree[i, j]);
                     }
                 }
-            }
-            for (int i = 0; i < _matriceCarree.GetLength(0); i++)
-            {
                 if (Math.Abs(_matriceCarree[i, i]) <= somme)
                 {
                     Exception e = new Exception("La matrice n'est pas diagonalement dominante");
                     throw e;
                 }
             }
+            //for (int i = 0; i < _matriceCarree.GetLength(0); i++)
+            // {
+
+            // }
         }
     }
 }
