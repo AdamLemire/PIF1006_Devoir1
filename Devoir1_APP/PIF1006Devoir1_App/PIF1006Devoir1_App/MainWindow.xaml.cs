@@ -26,20 +26,12 @@ namespace PIF1006Devoir1_App
     {
         private TextBox[,] matriceA, matriceB, matriceC;
 
-
         public MainWindow()
         {
             InitializeComponent();
             CacherCases();
             //compose_MatriceA();
         }
-
-        /*private List<TextBox> compose_MatriceA()
-        {
-            List<TextBox> matriceA5x5 = new List<TextBox>((new TextBox[] { A1_1,A1_2,A1_3,A1_4,A1_5,A2_1,A2_2,A2_3,A2_4,A2_5,A3_1,A3_2,A3_3,A3_4,A3_5,A4_1,A4_2,A4_3,A4_4,A4_5,A5_1,A5_2,A5_3,A5_4,A5_5 }));
-            return matriceA5x5;
-        }
-        */
 
         /// <summary>
         /// Création matrice A 5x5
@@ -331,7 +323,6 @@ namespace PIF1006Devoir1_App
                     if (matriceA[i, j].GetLineText(0) != "")
                     {
                         matriceAPleine[i, j] = Convert.ToInt32(matriceA[i, j].GetLineText(0));
-                        //resultatsTxt.Text = resultatsTxt.Text + " " + Convert.ToString(matriceAPleine[i, j]);
                     }
                     else
                     {
@@ -359,7 +350,6 @@ namespace PIF1006Devoir1_App
                     if (matriceB[i, j].GetLineText(0) != "")
                     {
                         matriceBPleine[i, j] = Convert.ToInt32(matriceB[i, j].GetLineText(0));
-                        //resultatsTxt.Text = resultatsTxt.Text + " " + Convert.ToString(matriceBPleine[i, j]);
                     }
                     else
                     {
@@ -399,13 +389,16 @@ namespace PIF1006Devoir1_App
             return matriceCPleine;
         }
 
+
+        ///////////////////////////// ************* Opérations  ***********////////////////////////////////
         private void BtnAddition_Click(object sender, RoutedEventArgs e)
         {
             try
             {
                 Matrice matriceA = CreerMatriceA(Convert.ToInt32(LignesA.Text), Convert.ToInt32(ColonnesA.Text));
                 Matrice matriceB = CreerMatriceB(Convert.ToInt32(LignesB.Text), Convert.ToInt32(ColonnesB.Text));
-                resultatsTxt.Text = (matriceA.Additionner(matriceB)).AfficheMatrice();
+                resultatsTxt.Text = "La somme des matrices A et B est : \r\n";
+                resultatsTxt.Text += (matriceA.Additionner(matriceB)).AfficheMatrice();
             }
             catch (Exception ex)
             {
@@ -421,7 +414,8 @@ namespace PIF1006Devoir1_App
                 if (Scalaire.Text != "")
                 {
                     Matrice matriceA = CreerMatriceA(Convert.ToInt32(LignesA.Text), Convert.ToInt32(ColonnesA.Text));
-                    resultatsTxt.Text = matriceA.FaireProduitScalaire(Convert.ToInt32(Scalaire.Text)).AfficheMatrice();
+                    resultatsTxt.Text = "Le produit de A par le scalaire " + Scalaire.Text + " est : \r\n";
+                    resultatsTxt.Text += matriceA.FaireProduitScalaire(Convert.ToInt32(Scalaire.Text)).AfficheMatrice();
                 }
                 else
                 {
@@ -457,9 +451,44 @@ namespace PIF1006Devoir1_App
                 if (LignesC.Text != "" && ColonnesC.Text != "")
                 {
                     matriceC = CreerMatriceC(Convert.ToInt32(LignesC.Text), Convert.ToInt32(ColonnesC.Text));
-                    resultatsTxt.Text = (matriceA.FaireProduitMatriciel(out a, matriceB, matriceC)).AfficheMatrice();
+                    resultatsTxt.Text = "(A x B) x C = \r\n";
+                    resultatsTxt.Text += (matriceA.FaireProduitMatriciel(out a, matriceB, matriceC)).AfficheMatrice();
                 }
-                else resultatsTxt.Text = (matriceA.FaireProduitMatriciel(out a, matriceB)).AfficheMatrice();
+                else
+                {
+                    resultatsTxt.Text = "A x B = \r\n";
+                    resultatsTxt.Text += (matriceA.FaireProduitMatriciel(out a, matriceB)).AfficheMatrice();
+                }
+
+                resultatsTxt.Text += "Nombre de produits effectues : " + a;
+            }
+            catch (Exception ex)
+            {
+                resultatsTxt.Text = "";
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void BtnProduitMatricielFin_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                Matrice matriceA = CreerMatriceA(Convert.ToInt32(LignesA.Text), Convert.ToInt32(ColonnesA.Text));
+                Matrice matriceB = CreerMatriceB(Convert.ToInt32(LignesB.Text), Convert.ToInt32(ColonnesB.Text));
+                Matrice matriceC;
+                int a = 0;
+                if (LignesC.Text != "" && ColonnesC.Text != "")
+                {
+                    matriceC = CreerMatriceC(Convert.ToInt32(LignesC.Text), Convert.ToInt32(ColonnesC.Text));
+                    resultatsTxt.Text = "A x (B x C) = \r\n";
+                    resultatsTxt.Text +=
+                        (matriceA.FaireProduitMatricielParFin(out a, matriceB, matriceC)).AfficheMatrice();
+                }
+                else
+                {
+                    resultatsTxt.Text = "A x B= \r\n";
+                    resultatsTxt.Text += (matriceA.FaireProduitMatriciel(out a, matriceB)).AfficheMatrice();
+                }
 
                 resultatsTxt.Text += "Nombre de produits effectues : " + a;
             }
@@ -591,7 +620,7 @@ namespace PIF1006Devoir1_App
             try
             {
                 Matrice matriceA = CreerMatriceA(Convert.ToInt32(LignesA.Text), Convert.ToInt32(ColonnesA.Text));
-                if (matriceA.EstCarree)  resultatsTxt.Text = "La matrice A est carrée";
+                if (matriceA.EstCarree) resultatsTxt.Text = "La matrice A est carrée";
             }
             catch (Exception ex)
             {
@@ -625,7 +654,7 @@ namespace PIF1006Devoir1_App
             int m = Convert.ToInt32(LignesA.Text);
             int n = Convert.ToInt32(ColonnesA.Text);
 
-            resultatsTxt.Text = methode +"\r\n" ;
+            resultatsTxt.Text = methode + "\r\n";
             int l = systemeX.GetLength(0);
 
             resultatsTxt.Text += "Système recherché : \r\n";

@@ -169,10 +169,6 @@ namespace PIF1006Devoir1
                     throw e;
                 }
             }
-            //for (int i = 0; i < _matriceCarree.GetLength(0); i++)
-            // {
-
-            // }
         }
     }
 }

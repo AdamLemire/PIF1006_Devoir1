@@ -73,12 +73,6 @@ namespace PIF1006Devoir1
                     addition[i, j] = this[i, j] + matrice[i, j];
 
             return addition;
-            //}
-            //else
-            //{
-            //    Console.WriteLine("Format de matrice incorrect");
-            //    return new Matrice(new double[0, 0]);
-            //}
         }
 
         //méthode du produit scalaire
@@ -94,7 +88,6 @@ namespace PIF1006Devoir1
                     produitScalaire[i, j] = _matrice[i, j] * scalaire;
                 }
             }
-
             return produitScalaire;
         }
 
@@ -103,8 +96,6 @@ namespace PIF1006Devoir1
         {
             //si le nombre de colonnes de A est égal au nombre de lignes de B
             VerifierColonneAcommeLigneB(matrice);
-            //if (VerifierColonneAcommeLigneB(matrice))
-            //{
 
             int n = _matrice.GetLength(0);
             int p = matrice.GetLength(1);
@@ -123,12 +114,6 @@ namespace PIF1006Devoir1
                     }
                 }
             return produitMatriciel;
-            //}
-            //else
-            //{
-            //    Console.WriteLine("Format de matrice incorrect");
-            //    return new Matrice(new double[0, 0]);
-            //}
 
         }
 
@@ -141,7 +126,6 @@ namespace PIF1006Devoir1
             {
                 operations += temp.GetLength(0) * temp.GetLength(1) * matrices[i].GetLength(1);
                 temp = temp.FaireProduitMatriciel(matrices[i]);
-
             }
             return temp;
         }
@@ -150,13 +134,16 @@ namespace PIF1006Devoir1
         public Matrice FaireProduitMatricielParFin(out int operations, params Matrice[] matrices)
         {
             operations = 0;
+            Matrice matriceA = this;
             Matrice temp = this;
-            for (int i = matrices.Length -1; i ==0; i--)
-            {
-                operations += temp.GetLength(0) * temp.GetLength(1) * matrices[i].GetLength(1);
-                temp = temp.FaireProduitMatriciel(matrices[i]);
 
+            for (int i = matrices.Length - 1; i == 1; i--)
+            {
+                operations += matrices[i - 1].GetLength(0) * matrices[i - 1].GetLength(1) * matrices[i].GetLength(1);
+                temp = matrices[i - 1].FaireProduitMatriciel(matrices[i]);
             }
+            operations += matriceA.GetLength(0) * matriceA.GetLength(1) * temp.GetLength(1);
+            temp = matriceA.FaireProduitMatriciel(temp);
             return temp;
         }
 
@@ -169,42 +156,46 @@ namespace PIF1006Devoir1
         /// <returns></returns>
         public bool EstTriangulaire(int triangulaire, bool estStricte)
         {
-            bool inferieure = true;
-            bool superieure = true;
-            bool stricte = true;
-
-            for (var i = 0; i < this.GetLength(0); i++)
+            if (EstCarree)
             {
-                for (var j = 0; j < this.GetLength(1); j++)
+                bool inferieure = true;
+                bool superieure = true;
+                bool stricte = true;
+
+                for (var i = 0; i < this.GetLength(0); i++)
                 {
-                    if (i > j && (this[i, j] != 0))
+                    for (var j = 0; j < this.GetLength(1); j++)
                     {
-                        superieure = false;
+                        if (i > j && (this[i, j] != 0))
+                        {
+                            superieure = false;
+                        }
+                        if (i < j && (this[i, j] != 0))
+                        {
+                            inferieure = false;
+                        }
+                        if (i == j && (this[i, j] != 0))
+                        {
+                            stricte = false;
+                        }
                     }
-                    if (i < j && (this[i, j] != 0))
-                    {
-                        inferieure = false;
-                    }
-                    if (i == j && (this[i, j] != 0))
-                    {
-                        stricte = false;
-                    }
-                }
 
+                }
+                if (estStricte == true)
+                {
+                    if (stricte == false) return false;
+                    else if (inferieure == true && (triangulaire == 0 || triangulaire == 2)) return true;
+                    else if (superieure == true && (triangulaire == 1 || triangulaire == 2)) return true;
+                    else return false;
+                }
+                else
+                {
+                    if (inferieure == true && (triangulaire == 0 || triangulaire == 2)) return true;
+                    else if (superieure == true && (triangulaire == 1 || triangulaire == 2)) return true;
+                    else return false;
+                }
             }
-            if (estStricte == true)
-            {
-                if (stricte == false) return false;
-                else if (inferieure == true && (triangulaire == 0 || triangulaire == 2)) return true;
-                else if (superieure == true && (triangulaire == 1 || triangulaire == 2)) return true;
-                else return false;
-            }
-            else
-            {
-                if (inferieure == true && (triangulaire == 0 || triangulaire == 2)) return true;
-                else if (superieure == true && (triangulaire == 1 || triangulaire == 2)) return true;
-                else return false;
-            }
+            else return false;
 
         }
 

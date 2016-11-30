@@ -136,7 +136,7 @@
         <Button x:Name="BtnAddition" Content="Addition de A et B" HorizontalAlignment="Left" Margin="33,282,0,0" VerticalAlignment="Top" Width="161" Click="BtnAddition_Click"/>
         <Button x:Name="BtnProduitScalaire" Content="Produit de A par scalaire :" HorizontalAlignment="Left" Margin="33,307,0,0" VerticalAlignment="Top" Width="161" Click="BtnProduitScalaire_Click"/>
         <TextBox x:Name="Scalaire" HorizontalAlignment="Left" Height="23" Margin="199,307,0,0" TextWrapping="Wrap" Text="Scalaire" GotFocus="Scalaire_GotFocus" VerticalAlignment="Top" Width="48"/>
-        <Button x:Name="BtnProduitMatriciel" Content="Produit Matriciel de A et B (et C)" HorizontalAlignment="Left" Margin="33,332,0,0" VerticalAlignment="Top" Width="188" Click="BtnProduitMatriciel_Click"/>
+        <Button x:Name="BtnProduitMatriciel" Content="(A x B) x C (C optionnel)" HorizontalAlignment="Left" Margin="33,332,0,0" VerticalAlignment="Top" Width="131" Click="BtnProduitMatriciel_Click"/>
         <Button x:Name="Triangularite" Content="Matrice A triangulaire ?" HorizontalAlignment="Left" Margin="33,357,0,0" VerticalAlignment="Top" Width="161" Click="BtnTriangularite_Click" RenderTransformOrigin="0.497,-1.15"/>
         <RadioButton x:Name="radioButton1" Content="Inférieure" HorizontalAlignment="Left" Margin="34,382,0,0" VerticalAlignment="Top" GroupName="Triangulaire"/>
         <RadioButton x:Name="radioButton2" Content="Supérieure" HorizontalAlignment="Left" Margin="34,397,0,0" VerticalAlignment="Top" GroupName="Triangulaire"/>
@@ -153,6 +153,7 @@
         <Label x:Name="EpsilonLabel" Content="Epsilon (décimal) :" HorizontalAlignment="Left" Margin="489,326,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.252,0.079"/>
         <TextBox x:Name="Epsilon" HorizontalAlignment="Left" Height="23" Margin="594,329,0,0" TextWrapping="Wrap" GotFocus="Scalaire_GotFocus" VerticalAlignment="Top" Width="36" Text="0.02"/>
         <Button x:Name="Carree" Content="Matrice A carrée?" HorizontalAlignment="Left" Margin="34,582,0,0" VerticalAlignment="Top" Width="159" Click="Carree_Click"/>
+        <Button x:Name="BtnProduitMatricielFin" Content="A x (B x C)" HorizontalAlignment="Left" Margin="169,332,0,0" VerticalAlignment="Top" Width="69" Click="BtnProduitMatricielFin_Click"/>
 
 
     </Grid>
