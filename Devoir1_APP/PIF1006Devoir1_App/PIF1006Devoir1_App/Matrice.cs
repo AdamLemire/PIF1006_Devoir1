@@ -130,7 +130,7 @@ namespace PIF1006Devoir1
             return temp;
         }
 
-        /////////en train d'arranger ca
+        //méthode du produit matriciel en commencant par la fin
         public Matrice FaireProduitMatricielParFin(out int operations, params Matrice[] matrices)
         {
             operations = 0;
